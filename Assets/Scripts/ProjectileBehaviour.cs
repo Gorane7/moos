@@ -39,6 +39,8 @@ public class ProjectileBehaviour : MonoBehaviour
                     monsterBehavior.ProjectileHit();
                 }
             }
+        } else {
+            Destroy(gameObject);
         }
     }
 }

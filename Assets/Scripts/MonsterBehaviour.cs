@@ -20,7 +20,7 @@ public class MonsterBehavior : MonoBehaviour
     public void ProjectileHit() {
         currentHealth -= 1;
         if (currentHealth <= 0) {
-            Destroy(gameObject);
+            LevelManager.main.RemoveMonster(gameObject);
         }
     }
 
@@ -38,7 +38,7 @@ public class MonsterBehavior : MonoBehaviour
             if (Vector3.Distance(transform.position, LevelManager.main.castle.transform.position) < 0.5f) // Adjust the threshold as needed
             {
                 // Remove the object if it collides with the target
-                Destroy(gameObject);
+                LevelManager.main.RemoveMonster(gameObject);
                 CastleBehavior castleBehavior = LevelManager.main.castle.GetComponent<CastleBehavior>();
                 if (castleBehavior != null)
                 {

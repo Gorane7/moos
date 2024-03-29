@@ -19,4 +19,11 @@ public class LevelManager : MonoBehaviour {
     void Start()
     {
     }
+
+    public void RemoveMonster(GameObject monster) {
+        if (monsters.Contains(monster)) {
+            monsters.Remove(monster);
+            Destroy(monster);
+        }
+    }
 }
