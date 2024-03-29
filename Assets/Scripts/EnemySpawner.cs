@@ -60,6 +60,7 @@ public class EnemySpawner : MonoBehaviour {
     private void EndWave() {
         isSpawning = false;
         timeSinceLastSpawn = 0f;
+        currentWave++;
         StartCoroutine(StartWave());
     }
     
