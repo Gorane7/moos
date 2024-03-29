@@ -5,8 +5,10 @@ using UnityEngine;
 public class TowerBehaviour : MonoBehaviour
 {
 
-    public float generationInterval = 2f;
-    public float moveSpeed = 5f;
+    [Header("Attributes")]
+    [SerializeField] private float generationInterval = 2f;
+    [SerializeField] private float moveSpeed = 5f;
+    
     public GameObject objectToGenerate;
     
     public Vector3 size;

@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class ProjectileBehaviour : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    [Header("Attributes")]
+    [SerializeField] private float moveSpeed = 5f;
 
     // Target object towards which the projectile should move
     private GameObject targetObject;

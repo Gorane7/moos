@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class MonsterBehavior : MonoBehaviour
 {
-    public float moveSpeed = 5f;
 
-    public static int baseHealth = 2;
+    [Header("Attributes")]
+    [SerializeField] private float moveSpeed = 5f;
+
+    [SerializeField] private static int baseHealth = 2;
 
     private int currentHealth = baseHealth;
 
@@ -32,6 +34,13 @@ public class MonsterBehavior : MonoBehaviour
 
             // Move towards the castle
             transform.Translate(direction * moveSpeed * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, LevelManager.main.castle.transform.position) < 0.5f) // Adjust the threshold as needed
+            {
+                // Remove the object if it collides with the target
+                Destroy(gameObject);
+                LevelManager.main.MonsterHit();
+            }
 
             // Wait for the next frame
             yield return null;
