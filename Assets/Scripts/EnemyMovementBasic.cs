@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovementBasic : MonoBehaviour {
-    [Header("References")]
+    /*[Header("References")]
     [SerializeField] private Rigidbody2D rb;
     
     [Header("Attributes")]
@@ -37,5 +37,5 @@ public class EnemyMovementBasic : MonoBehaviour {
         Vector2 direction = (target.position - transform.position).normalized;
 
         rb.velocity = direction * moveSpeed;
-    }
+    }*/
 }
