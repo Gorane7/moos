@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8908171214510749384}
   - component: {fileID: 5555879453866744055}
+  - component: {fileID: 5779770151770499025}
   m_Layer: 0
   m_Name: castle
   m_TagString: Untagged
@@ -84,3 +85,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5779770151770499025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098366713822403725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fbc4e8c6cdffe3389f12eb18b64cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarRedPrefab: {fileID: 6633592109842108472, guid: 37aedec9ca15411bbbeb93af47d82350, type: 3}

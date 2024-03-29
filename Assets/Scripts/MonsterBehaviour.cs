@@ -4,17 +4,36 @@ using UnityEngine;
 public class MonsterBehavior : MonoBehaviour
 {
 
+    [Header("References")]
+    [SerializeField] private GameObject healthBarRedPrefab;
+    [SerializeField] private GameObject healthBarGreenPrefab;
+
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 5f;
 
     [SerializeField] private static int baseHealth = 2;
 
     private int currentHealth = baseHealth;
+    private GameObject healthBarRed;
+    private GameObject healthBarGreen;
+
 
     void Start()
     {
         // Start generating monsters periodically
         StartCoroutine(MoveTowardsCastle());
+        healthBarRed = Instantiate(healthBarRedPrefab, transform.position, Quaternion.identity, transform);
+
+        Vector3 redScale = healthBarRed.transform.localScale;
+        redScale.y = 0.1f;
+        healthBarRed.transform.localScale = redScale;
+
+        Vector3 redPosition = healthBarRed.transform.localPosition;
+        redPosition.y = 1.1f;
+        healthBarRed.transform.localPosition = redPosition;
+
+        //healthBarGreen = Instantiate(healthBarGreenPrefab, transform.position, Quaternion.identity, transform);
+        AdjustHealthBars();
     }
 
     public void ProjectileHit() {
@@ -46,9 +65,27 @@ public class MonsterBehavior : MonoBehaviour
                     castleBehavior.MonsterHit();
                 }
             }
+            AdjustHealthBars();
 
             // Wait for the next frame
             yield return null;
+        }
+    }
+
+    private void AdjustHealthBars()
+    {
+        if (healthBarRed != null)
+        {
+            // Calculate the health percentage
+        float healthPercentage = (float)currentHealth / baseHealth;
+
+        Vector3 redScale = healthBarRed.transform.localScale;
+        redScale.x = healthPercentage;
+        healthBarRed.transform.localScale = redScale;
+
+        Vector3 redPosition = healthBarRed.transform.localPosition;
+        redPosition.x = healthPercentage - 1f;
+        healthBarRed.transform.localPosition = redPosition;
         }
     }
 }

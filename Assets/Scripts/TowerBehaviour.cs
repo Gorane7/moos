@@ -34,7 +34,7 @@ public class TowerBehaviour : MonoBehaviour
             // Instantiate the object at the random position
             
             GameObject randomMonster = GetRandomMonster();
-            Debug.Log("Got monster " + randomMonster);
+            //Debug.Log("Got monster " + randomMonster);
 
             // If there are monsters available
             if (randomMonster != null)
@@ -59,7 +59,7 @@ public class TowerBehaviour : MonoBehaviour
         {
             // Choose a random index
             int randomIndex = Random.Range(0, levelManager.monsters.Count);
-            Debug.Log("Got random index " + randomIndex + " and monsterlist length is " + levelManager.monsters.Count);
+            //Debug.Log("Got random index " + randomIndex + " and monsterlist length is " + levelManager.monsters.Count);
             // Return the monster at the random index
             return levelManager.monsters[randomIndex];
         }
