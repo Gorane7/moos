@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour {
     public List<GameObject> monsters;
     private int currentHealth = baseHealth;
 
+    public int currency = 100;
+
     private void Awake() {
         main = this;
     }
@@ -41,12 +43,13 @@ public class LevelManager : MonoBehaviour {
         // Goes through towers and checks if there is a tower near the new one.
         foreach (GameObject tower in towers) {
             if (Vector3.Distance(mouseWorldPos, tower.transform.position) < 0.5f) {
+                // TODO: add build error return
                 return;
             }
         }
 
         // Creates the tower object that it builds and adds it to the list aswell.
-        GameObject towerToBuild = BuildManager.main.GetSelectedTower();
-        towers.Add(Instantiate(towerToBuild, mouseWorldPos, Quaternion.identity));
+        Tower towerToBuild = BuildManager.main.GetSelectedTower();
+        towers.Add(Instantiate(towerToBuild.prefab, mouseWorldPos, Quaternion.identity));
     }
 }
