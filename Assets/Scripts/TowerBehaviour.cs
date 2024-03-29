@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class TowerBehaviour : MonoBehaviour
 {
 
     [Header("Attributes")]
-    [SerializeField] private float generationInterval = 2f;
+    [SerializeField] private float generationInterval = 0.5f;
+    [SerializeField] private float shootRadius = 10f;
+    [SerializeField] private float lineWidth = 0.1f;
 
     public GameObject objectToGenerate;
     
     public Vector3 size;
     private LevelManager levelManager;
     private Vector3 centerPosition;
+    private float sleepInterval = 0.1f;
+    private int vertexCount = 40;
+    private LineRenderer lineRenderer;
+
+    void Awake()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.startWidth = lineWidth;
+        lineRenderer.endWidth = lineWidth;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -45,33 +58,63 @@ public class TowerBehaviour : MonoBehaviour
                 {
                     projectileBehaviour.SetTargetObject(randomMonster);
                 }
+                yield return new WaitForSeconds(generationInterval);
             }
-
-            // Wait for the specified interval before generating the next object
-            yield return new WaitForSeconds(generationInterval);
+            yield return new WaitForSeconds(sleepInterval);
         }
     }
 
     GameObject GetRandomMonster()
     {
-        // If there are monsters available in the levelManager
-        if (levelManager.monsters.Count > 0)
+        List<GameObject> monstersInRange = new List<GameObject>();
+
+        // Iterate through all monsters
+        foreach (GameObject monster in levelManager.monsters)
         {
-            // Choose a random index
-            int randomIndex = Random.Range(0, levelManager.monsters.Count);
-            //Debug.Log("Got random index " + randomIndex + " and monsterlist length is " + levelManager.monsters.Count);
+            // Calculate the distance between the tower and the monster
+            float distance = Vector3.Distance(transform.position, monster.transform.position);
+
+            // If the monster is within range, add it to the list
+            if (distance <= shootRadius)
+            {
+                monstersInRange.Add(monster);
+            }
+        }
+
+        // If there are monsters within range
+        if (monstersInRange.Count > 0)
+        {
+            // Choose a random index from the monsters within range
+            int randomIndex = Random.Range(0, monstersInRange.Count);
             // Return the monster at the random index
-            return levelManager.monsters[randomIndex];
+            return monstersInRange[randomIndex];
         }
-        else
-        {
-            return null; // Return null if there are no monsters available
-        }
+        return null;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        DrawCircle();
+    }
+
+    void DrawCircle()
+    {
+        lineRenderer.positionCount = vertexCount + 1;
+        lineRenderer.useWorldSpace = true;
+
+        float deltaTheta = (2f * Mathf.PI) / vertexCount;
+        float theta = 0f;
+
+        for (int i = 0; i < vertexCount + 1; i++)
+        {
+            float x = shootRadius * Mathf.Cos(theta);
+            float y = shootRadius * Mathf.Sin(theta);
+
+            Vector3 pos = new Vector3(x, y, 0f) + centerPosition;
+            lineRenderer.SetPosition(i, pos);
+
+            theta += deltaTheta;
+        }
     }
 }
