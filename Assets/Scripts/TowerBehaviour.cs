@@ -38,33 +38,15 @@ public class TowerBehaviour : MonoBehaviour
             if (randomMonster != null)
             {
                 GameObject projectile = Instantiate(objectToGenerate, spawnPosition, Quaternion.identity);
-                StartCoroutine(MoveTowardsTarget(projectile, randomMonster));
+                ProjectileBehaviour projectileBehaviour = projectile.GetComponent<ProjectileBehaviour>();
+                if (projectileBehaviour != null)
+                {
+                    projectileBehaviour.SetTargetObject(randomMonster);
+                }
             }
 
             // Wait for the specified interval before generating the next object
             yield return new WaitForSeconds(generationInterval);
-        }
-    }
-
-    IEnumerator MoveTowardsTarget(GameObject projectile, GameObject targetObject)
-    {
-        while (true)
-        {
-            // Calculate the direction towards the target
-            Vector3 direction = (targetObject.transform.position - projectile.transform.position).normalized;
-
-            // Move towards the target
-            projectile.transform.Translate(direction * moveSpeed * Time.deltaTime);
-
-             if (Vector3.Distance(projectile.transform.position, targetObject.transform.position) < 0.5f) // Adjust the threshold as needed
-            {
-                // Remove the object if it collides with the target
-                Destroy(projectile);
-                break; // Exit the coroutine
-            }
-
-            // Wait for the next frame
-            yield return null;
         }
     }
 

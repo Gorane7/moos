@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 605451136fbf62990bec8bd0d49cbe04
+guid: b1f063b7fe8c37edaac5fc72373aa78f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - monsterPrefab: {fileID: 4820875501583579615, guid: 160234e2aab4d982fa5db88c9001e9bb, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
