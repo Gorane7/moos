@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour {
     public static int baseHealth;
 
     public GameObject castle;
-    public GameObject[] towers;
+    public List<GameObject> towers;
     public GameObject[] caves;
     public List<GameObject> monsters;
     private int currentHealth = baseHealth;
@@ -25,5 +25,28 @@ public class LevelManager : MonoBehaviour {
             monsters.Remove(monster);
             Destroy(monster);
         }
+    }
+
+    private void Update() {
+        if (Input.GetMouseButtonDown(0)) {
+            OnMouseDown();
+        }
+    }
+
+    private void OnMouseDown() {
+        // Gets the mouse position relative to camera and sets the z position to 0.
+        var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = 0f;
+
+        // Goes through towers and checks if there is a tower near the new one.
+        foreach (GameObject tower in towers) {
+            if (Vector3.Distance(mouseWorldPos, tower.transform.position) < 0.5f) {
+                return;
+            }
+        }
+
+        // Creates the tower object that it builds and adds it to the list aswell.
+        GameObject towerToBuild = BuildManager.main.GetSelectedTower();
+        towers.Add(Instantiate(towerToBuild, mouseWorldPos, Quaternion.identity));
     }
 }
