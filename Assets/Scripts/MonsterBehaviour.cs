@@ -39,7 +39,12 @@ public class MonsterBehavior : MonoBehaviour
             {
                 // Remove the object if it collides with the target
                 Destroy(gameObject);
-                LevelManager.main.MonsterHit();
+                CastleBehavior castleBehavior = LevelManager.main.castle.GetComponent<CastleBehavior>();
+                if (castleBehavior != null)
+                {
+                    // Call the ProjectileHit method on the MonsterBehavior component
+                    castleBehavior.MonsterHit();
+                }
             }
 
             // Wait for the next frame

@@ -16,10 +16,6 @@ public class LevelManager : MonoBehaviour {
         main = this;
     }
 
-    public void MonsterHit() {
-        currentHealth -= 1;
-    }
-
     void Start()
     {
     }

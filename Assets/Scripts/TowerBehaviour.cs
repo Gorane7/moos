@@ -7,8 +7,7 @@ public class TowerBehaviour : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float generationInterval = 2f;
-    [SerializeField] private float moveSpeed = 5f;
-    
+
     public GameObject objectToGenerate;
     
     public Vector3 size;
