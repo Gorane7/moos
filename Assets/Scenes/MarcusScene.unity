@@ -123,74 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &41507535
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 41507538}
-  - component: {fileID: 41507537}
-  - component: {fileID: 41507536}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &41507536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41507535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &41507537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41507535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &41507538
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41507535}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &136672005 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2098366713822403725, guid: 8856b02a16b7b97738ccc2b87d9af69c, type: 3}
@@ -253,17 +185,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 226eea3268ac30d408858b38b7379d29, type: 3}
---- !u!114 &913269315 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8400468719591420170, guid: 83ea58244cca4784799f497bda38f8c0, type: 3}
-  m_PrefabInstance: {fileID: 1202511782}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eba8b0f0b3f48724d83d8dff07e33f65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1074262861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -447,30 +368,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 296157450040512101, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 296157450040512101, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 296157450040512101, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 913269315}
-    - target: {fileID: 296157450040512101, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetSelectedTower
-      objectReference: {fileID: 0}
-    - target: {fileID: 296157450040512101, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: BuildManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 296157450040512101, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 898699007178896818, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -498,14 +395,6 @@ PrefabInstance:
     - target: {fileID: 3088102265407199673, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4649911926421475627, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2146191629}
-    - target: {fileID: 4649911926421475627, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleMenu
       objectReference: {fileID: 0}
     - target: {fileID: 5354071608024171980, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
       propertyPath: m_Pivot.x
@@ -610,26 +499,6 @@ PrefabInstance:
     - target: {fileID: 6698264807768377033, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960466380951893934, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
-      propertyPath: towerCost
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 6986444529063749249, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7460205848232577486, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 913269315}
-    - target: {fileID: 7460205848232577486, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetSelectedTower
-      objectReference: {fileID: 0}
-    - target: {fileID: 7714267200565540749, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
-      propertyPath: towerCost
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -807,17 +676,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7af81dc6698c1c4b81f0d05080bc663, type: 3}
---- !u!114 &2146191629 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4606735385525020260, guid: a5a1fb399e0a37548bdb447d63179582, type: 3}
-  m_PrefabInstance: {fileID: 1264240869}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e689472a71005164a95a5b69efbc5a5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4181404859614722229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -888,4 +746,3 @@ SceneRoots:
   - {fileID: 1488068642}
   - {fileID: 1254198854}
   - {fileID: 4181404859614722229}
-  - {fileID: 41507538}
