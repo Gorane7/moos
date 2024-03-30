@@ -46,11 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castle: {fileID: 0}
-  towers: []
   caves:
   - {fileID: 0}
   monsters:
   - {fileID: 4820875501583579615, guid: 160234e2aab4d982fa5db88c9001e9bb, type: 3}
+  towerButtons:
+  - {fileID: 0}
+  - {fileID: 0}
   currency: 100
 --- !u!114 &5102453711673914490
 MonoBehaviour:
