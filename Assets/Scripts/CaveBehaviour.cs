@@ -18,6 +18,7 @@ public class CaveBehaviour : MonoBehaviour {
     private int enemiesLeftToSpawn;
     private bool isSpawning = false;
     private SpriteRenderer spriteRenderer;
+    public List<GameObject> torches = new List<GameObject>();
 
     private void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -45,6 +46,16 @@ public class CaveBehaviour : MonoBehaviour {
     {
         if (collision.tag != "Torch") return;
         if (!isSpawning) StartCoroutine(StartWave());
+        torches.Add(collision.gameObject);
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag != "Torch") return;
+        torches.Remove(collision.gameObject);
+        if (torches.Count == 0) {
+            isSpawning = false;
+        }
+
     }
 
     private IEnumerator StartWave() {
