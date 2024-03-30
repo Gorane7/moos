@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2371175831479047512}
   - component: {fileID: 42708609452478891}
   - component: {fileID: 8839257386860343383}
+  - component: {fileID: 3570017801479603315}
   m_Layer: 0
   m_Name: monster
   m_TagString: Untagged
@@ -28,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 4820875501583579615}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.63, y: -0.38, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2199, y: 0.2199, z: 0.2199}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 415e1710f9dfa007ca82e53926f16a8c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb346f26d8b46c341bb00509fefc7073, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,6 +104,7 @@ MonoBehaviour:
   moveSpeed: 1
   torches: []
   towerAttackDistance: 2
+  attackspeed: 1
 --- !u!58 &8839257386860343383
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -135,6 +137,27 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.13581753, y: -0.077610254}
+  m_Offset: {x: -0.45470008, y: 0.06411389}
   serializedVersion: 2
-  m_Radius: 0.4303875
+  m_Radius: 1.4578887
+--- !u!95 &3570017801479603315
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4820875501583579615}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 11bad01298ed28b4090afcc87440786e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
