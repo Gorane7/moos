@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7789828599787092454}
   - component: {fileID: 6421846795234690415}
   - component: {fileID: 8175078860450881060}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider
   m_TagString: Torch
   m_Icon: {fileID: 0}
