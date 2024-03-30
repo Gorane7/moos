@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class StartGameButton : MonoBehaviour {
 
-    public int gameStartScene;
+    private int gameStartScene;
     
     public void StartGame() {
         SceneManager.LoadScene(gameStartScene);
+    }
+
+    public void SetScene(int sceneNumber) {
+        gameStartScene = sceneNumber;
     }
 }
