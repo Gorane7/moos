@@ -25,6 +25,7 @@ public class TowerBehaviour : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.startWidth = lineWidth;
         lineRenderer.endWidth = lineWidth;
+        lineRenderer.sortingOrder = 1;
     }
 
     // Start is called before the first frame update
