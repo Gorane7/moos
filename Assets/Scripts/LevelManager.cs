@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour {
     public List<GameObject> torches;
     private int currentHealth = baseHealth;
 
-    public int currency = 100;
+    public int currency = 10;
 
     private void Awake() {
         main = this;

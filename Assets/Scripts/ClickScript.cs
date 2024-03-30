@@ -48,17 +48,29 @@ public class ClickScript : MonoBehaviour
     private void ExplodeProjectileTower(GameObject thingtodestroy, Vector3 positiontocreate)
     {
         GameObject.Destroy(thingtodestroy);
+        Debug.Log("Attempting to create tower at " + positiontocreate);
+
+        if (BuildManager.main.GetSelectedTower().GetCost() > LevelManager.main.currency) {
+            Debug.Log("Not enough money to create or upgrade tower");
+            return;
+        }
 
         foreach (Tower towerInList in LevelManager.main.towers)
         {
             // Check if the tower's currentObject is close to positionToCreate
             if (Vector3.Distance(towerInList.GetCurrentObject().transform.position, positiontocreate) < 3f)
             {
+                Debug.Log("Found tower at " + towerInList.GetCurrentObject().transform.position);
+                if (towerInList.AtFinalStage()) {
+                    Debug.Log("Tower already at final stage, not upgrading");
+                    return;
+                }
                 towerInList.Increment();
                 GameObject currentObject = towerInList.GetCurrentObject();
                 GameObject newPrefab = Instantiate(towerInList.GetCurrentPrefab(), currentObject.transform.position, Quaternion.identity);
-                Destroy(currentObject);
+                GameObject.Destroy(currentObject);
                 towerInList.SetCurrentObject(newPrefab);
+                Debug.Log("Upgrading tower");
                 return;
             }
         }
@@ -67,6 +79,7 @@ public class ClickScript : MonoBehaviour
         GameObject currentPrefab = Instantiate(tower.prefabs[0], positiontocreate, Quaternion.identity);
         tower.SetCurrentObject(currentPrefab);
         LevelManager.main.towers.Add(tower);
+        Debug.Log("Creating new tower");
         
         //GameObject t = Instantiate(torch, positiontocreate, Quaternion.identity);
         //LevelManager.main.torches.Add(t);

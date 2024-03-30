@@ -326,6 +326,10 @@ PrefabInstance:
       propertyPath: castle
       value: 
       objectReference: {fileID: 136672005}
+    - target: {fileID: 2644491054423673520, guid: 83ea58244cca4784799f497bda38f8c0, type: 3}
+      propertyPath: currency
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4917952768769904226, guid: 83ea58244cca4784799f497bda38f8c0, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -697,7 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towers:
   - name: Base
-    cost: 100
+    cost: 10
     prefabs:
     - {fileID: 6688719700315848630, guid: 695e966be4f34f4f1825e89b648ac1bd, type: 3}
     - {fileID: 2209283928048279858, guid: ba121a24818b4f3a3adb8ebab6725882, type: 3}
@@ -882,20 +886,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1813358826771593180, guid: a872ef851d81db84393a50b75aa3b417, type: 3}
-      propertyPath: dieSpeed
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1813358826771593180, guid: a872ef851d81db84393a50b75aa3b417, type: 3}
-      propertyPath: amplitude
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1813358826771593180, guid: a872ef851d81db84393a50b75aa3b417, type: 3}
-      propertyPath: frequency
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1813358826771593180, guid: a872ef851d81db84393a50b75aa3b417, type: 3}
       propertyPath: growSpeed
-      value: 0.02
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5387491848555486225, guid: a872ef851d81db84393a50b75aa3b417, type: 3}
       propertyPath: m_Materials.Array.size
