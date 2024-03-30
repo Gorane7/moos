@@ -399,6 +399,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8400468719591420170, guid: 83ea58244cca4784799f497bda38f8c0, type: 3}
+      propertyPath: towers.Array.data[0].prefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400468719591420170, guid: 83ea58244cca4784799f497bda38f8c0, type: 3}
+      propertyPath: towers.Array.data[0].prefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8471832276483908829, guid: 4ed3c5d78f478bab3ac8ff4d4172e6f4, type: 3}
+    - target: {fileID: 8400468719591420170, guid: 83ea58244cca4784799f497bda38f8c0, type: 3}
+      propertyPath: towers.Array.data[0].prefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 8018485546059453861, guid: 1c7be36e0cbe119b6acffed55ac58ab5, type: 3}
+    - target: {fileID: 8400468719591420170, guid: 83ea58244cca4784799f497bda38f8c0, type: 3}
+      propertyPath: towers.Array.data[0].prefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4122498018323969376, guid: c114bc58ac5bbe33db78283b22a33a8a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -749,7 +765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8201468007015281887, guid: f7af81dc6698c1c4b81f0d05080bc663, type: 3}
       propertyPath: orthographic size
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
