@@ -326,14 +326,6 @@ PrefabInstance:
       propertyPath: castle
       value: 
       objectReference: {fileID: 136672005}
-    - target: {fileID: 2644491054423673520, guid: 83ea58244cca4784799f497bda38f8c0, type: 3}
-      propertyPath: cavePrefab
-      value: 
-      objectReference: {fileID: 3427281483446862054, guid: 2ffb0a44367a6afe8991bf3051de059b, type: 3}
-    - target: {fileID: 2644491054423673520, guid: 83ea58244cca4784799f497bda38f8c0, type: 3}
-      propertyPath: menhirPrefab
-      value: 
-      objectReference: {fileID: 5640790568922471749, guid: a872ef851d81db84393a50b75aa3b417, type: 3}
     - target: {fileID: 4917952768769904226, guid: 83ea58244cca4784799f497bda38f8c0, type: 3}
       propertyPath: m_Name
       value: LevelManager
