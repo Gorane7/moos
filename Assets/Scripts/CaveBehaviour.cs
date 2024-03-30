@@ -44,12 +44,14 @@ public class CaveBehaviour : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        return;
         if (collision.tag != "Torch") return;
         if (!isSpawning) StartCoroutine(StartWave());
         torches.Add(collision.gameObject);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        return;
         if (collision.tag != "Torch") return;
         torches.Remove(collision.gameObject);
         if (torches.Count == 0) {

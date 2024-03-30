@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour {
 
     public GameObject castle;
     public GameObject cavePrefab;
+    public GameObject bossPrefab;
     public GameObject menhirPrefab;
 
     public List<Tower> towers;
@@ -17,6 +18,8 @@ public class LevelManager : MonoBehaviour {
     public List<GameObject> monsters;
     public List<GameObject> torches;
     private int currentHealth = baseHealth;
+
+    private GameObject boss;
 
     public int currency = 10;
 
@@ -29,7 +32,8 @@ public class LevelManager : MonoBehaviour {
         caves = new List<GameObject>();
         menhirs = new List<GameObject>();
         StartCoroutine(IncreaseCurrencyOverTime());
-        GenerateCaves(100);
+        GenerateBoss();
+        GenerateCaves(2);
         GenerateMenhirs(100);
     }
 
@@ -40,6 +44,19 @@ public class LevelManager : MonoBehaviour {
             yield return new WaitForSeconds(1f); // Wait for 1 second
             AddCurrency(1);
         }
+    }
+
+    void GenerateBoss() {
+        float randomDirection = Random.Range(0f, 2f * Mathf.PI);
+        float randomDistance = 20f;
+
+        Debug.Log("Boss generation angle: " + randomDirection);
+
+        float x = randomDistance * Mathf.Cos(randomDirection);
+        float y = randomDistance * Mathf.Sin(randomDirection);
+
+        Vector3 randomPosition = new Vector3(x, y, 0f);
+        boss = Instantiate(bossPrefab, randomPosition, Quaternion.identity);
     }
 
     void GenerateCaves(int numberOfCaves)
@@ -53,7 +70,7 @@ public class LevelManager : MonoBehaviour {
             while (randomDistance < 10f) {
                 randomDistance = Random.Range(0f, 1f);
                 randomDistance = 1 - Mathf.Pow(randomDistance, 4);
-                randomDistance *= 100f;
+                randomDistance *= 50f;
             }
 
             float x = randomDistance * Mathf.Cos(randomDirection);
