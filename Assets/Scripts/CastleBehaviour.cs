@@ -14,6 +14,7 @@ public class CastleBehavior : MonoBehaviour
     private int currentHealth = baseHealth;
 
     private GameObject healthBarRed;
+    private StartGameButton startGameButton = new StartGameButton();
 
     void Start()
     {
@@ -36,8 +37,7 @@ public class CastleBehavior : MonoBehaviour
 
     private void AdjustHealthBars()
     {
-        if (healthBarRed != null)
-        {
+        if (currentHealth > 0) {
             // Calculate the health percentage
         float healthPercentage = (float)currentHealth / baseHealth;
 
@@ -48,6 +48,9 @@ public class CastleBehavior : MonoBehaviour
         Vector3 redPosition = healthBarRed.transform.localPosition;
         redPosition.x = healthPercentage - 1f;
         healthBarRed.transform.localPosition = redPosition;
+        } else {
+            startGameButton.SetScene(0);
+            startGameButton.StartGame();
         }
     }
 }
