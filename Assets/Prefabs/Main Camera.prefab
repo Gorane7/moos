@@ -167,4 +167,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torch: {fileID: 45769304530444253, guid: e59445eb84f4b9c4a806f7dc33e0d002, type: 3}
   emptytorch: {fileID: 45769304530444253, guid: 2189897bf71248a43aaa31e0e029f5d2, type: 3}
-  projectileSpeed: 1
+  projectileSpeed: 3

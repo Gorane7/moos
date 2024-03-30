@@ -835,7 +835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5899078092503969546, guid: a872ef851d81db84393a50b75aa3b417, type: 3}
       propertyPath: m_LayerOverridePriority
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5940244437234910890, guid: a872ef851d81db84393a50b75aa3b417, type: 3}
       propertyPath: m_Color.b
