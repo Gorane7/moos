@@ -55,6 +55,9 @@ public class ResourcePoint : MonoBehaviour
                 connectionLength = 0;
             }
         }
+        if (connectionState == "Done") {
+            LevelManager.main.AddCurrency(1);
+        }
         DrawConnection();
     }
 

@@ -38,6 +38,10 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
+    public void AddCurrency(int amount) {
+        currency += amount;
+    }
+
     /*
 
     private void Update() {
