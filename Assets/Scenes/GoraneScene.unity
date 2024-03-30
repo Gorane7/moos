@@ -398,7 +398,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 45769304530444253, guid: e59445eb84f4b9c4a806f7dc33e0d002, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1897233441}
   m_SourcePrefab: {fileID: 100100000, guid: e59445eb84f4b9c4a806f7dc33e0d002, type: 3}
 --- !u!1001 &1264240869
 PrefabInstance:
@@ -805,6 +808,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8856b02a16b7b97738ccc2b87d9af69c, type: 3}
+--- !u!1 &1897233438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 45769304530444253, guid: e59445eb84f4b9c4a806f7dc33e0d002, type: 3}
+  m_PrefabInstance: {fileID: 1254198854}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1897233441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897233438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47191d75f29b49a04a71b682cc835327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarRedPrefab: {fileID: 6633592109842108472, guid: 37aedec9ca15411bbbeb93af47d82350, type: 3}
 --- !u!1001 &1928103707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -813,6 +834,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 425791887386184462, guid: f7af81dc6698c1c4b81f0d05080bc663, type: 3}
+      propertyPath: towerPart
+      value: 
+      objectReference: {fileID: 45769304530444253, guid: aea1f93d60a0b0d299ede1f1be433353, type: 3}
     - target: {fileID: 950120652005722692, guid: f7af81dc6698c1c4b81f0d05080bc663, type: 3}
       propertyPath: m_CameraType
       value: 0

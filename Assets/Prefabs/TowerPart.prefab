@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1453189516803942597}
   - component: {fileID: -8169229310110261013}
   m_Layer: 0
-  m_Name: EmptyTorch
+  m_Name: TowerPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: -9095717837082945937, guid: ff0fb040185fe844f8609cdd8b71c267, type: 3}
-  m_Color: {r: 1, g: 0.768934, b: 0, a: 1}
+  m_Color: {r: 0.4799304, g: 0.456248, b: 0.37757424, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

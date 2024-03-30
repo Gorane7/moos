@@ -671,6 +671,7 @@ GameObject:
   - component: {fileID: 808184682744838813}
   - component: {fileID: 3235567855302835942}
   - component: {fileID: 7460205848232577486}
+  - component: {fileID: 6960466380951893934}
   m_Layer: 5
   m_Name: Test Tower
   m_TagString: Untagged
@@ -761,7 +762,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.21960784, g: 0.21960784, b: 0.21960784, a: 0.9411765}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -792,6 +793,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6960466380951893934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5592101338346751385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f58d6c33edd5cd44f93c078187e1a7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerCost: 150
 --- !u!1 &6967278981804168779
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,6 +818,7 @@ GameObject:
   - component: {fileID: 7757356345311604879}
   - component: {fileID: 1893955838033173954}
   - component: {fileID: 296157450040512101}
+  - component: {fileID: 7714267200565540749}
   m_Layer: 5
   m_Name: Basic Tower
   m_TagString: Untagged
@@ -894,7 +909,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0.9411765}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -925,6 +940,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7714267200565540749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967278981804168779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f58d6c33edd5cd44f93c078187e1a7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerCost: 80
 --- !u!1 &7503534158524164292
 GameObject:
   m_ObjectHideFlags: 0

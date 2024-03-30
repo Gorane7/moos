@@ -55,6 +55,9 @@ public class ResourcePoint : MonoBehaviour
                 connectionLength = 0;
             }
         }
+        if (connectionState == "Done") {
+            LevelManager.main.AddCurrency(1);
+        }
         DrawConnection();
     }
 
@@ -62,7 +65,7 @@ public class ResourcePoint : MonoBehaviour
     {
         // Get the LineRenderer's material
         Material material = lineRenderer.material;
-        Debug.Log("Material: " + material);
+        //Debug.Log("Material: " + material);
 
         // Get the current color
         Color currentColor = material.color;

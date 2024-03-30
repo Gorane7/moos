@@ -7,9 +7,12 @@ public class LevelManager : MonoBehaviour {
     public static int baseHealth;
 
     public GameObject castle;
-    public List<GameObject> towers;
+
+    public List<Tower> towers;
+    private List<GameObject> towerButtons = new List<GameObject>();
     public GameObject[] caves;
     public List<GameObject> monsters;
+    public List<GameObject> torches;
     private int currentHealth = baseHealth;
 
     public int currency = 100;
@@ -29,8 +32,31 @@ public class LevelManager : MonoBehaviour {
             Destroy(monster);
         }
     }
-    /*
 
+    public void RemoveTorch(GameObject torch) {
+        if (torches.Contains(torch)) {
+            torches.Remove(torch);
+            Destroy(torch);
+        }
+    }
+
+    public void AddCurrency(int amount) {
+        currency += amount;
+        UpdateButtons();
+    }
+
+    public void SpendCurrency(int costAmount) {
+        currency -= costAmount;
+        UpdateButtons();
+    }
+
+    public void UpdateButtons() {
+        foreach (GameObject button in towerButtons) {
+            button.GetComponent<TowerButton>().enableButton();
+        }
+    }
+
+    /*
     private void Update() {
         if (Input.GetMouseButtonDown(0)) {
             OnMouseDown();
@@ -50,8 +76,17 @@ public class LevelManager : MonoBehaviour {
             }
         }
 
-        // Creates the tower object that it builds and adds it to the list aswell.
+        // Gets the tower to build.
         Tower towerToBuild = BuildManager.main.GetSelectedTower();
+
+        // Cost check. If too expensive return if not then remove money.
+        if (towerToBuild.cost > currency) {
+            return;
+        } else {
+            SpendCurrency(towerToBuild.cost);
+        }
+
+        // Instantiates it and adds it to the list aswell.
         towers.Add(Instantiate(towerToBuild.prefab, mouseWorldPos, Quaternion.identity));
     }*/
 }
