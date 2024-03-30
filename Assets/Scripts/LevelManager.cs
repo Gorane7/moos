@@ -40,10 +40,15 @@ public class LevelManager : MonoBehaviour {
 
     public void AddCurrency(int amount) {
         currency += amount;
+        UpdateButtons();
     }
 
     public void SpendCurrency(int costAmount) {
         currency -= costAmount;
+        UpdateButtons();
+    }
+
+    public void UpdateButtons() {
         foreach (GameObject button in towerButtons) {
             button.GetComponent<TowerButton>().enableButton();
         }
