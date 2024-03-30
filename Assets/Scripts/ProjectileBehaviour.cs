@@ -5,19 +5,36 @@ public class ProjectileBehaviour : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 5f;
+    private float lifeLength = 5.0f;
+    private float lifeStartTime;
 
     // Target object towards which the projectile should move
     private GameObject targetObject;
 
     // Set the target object for the projectile
+
     public void SetTargetObject(GameObject target)
     {
         targetObject = target;
     }
 
+    private void Start()
+    {
+        lifeStartTime = Time.time;
+    }
+
+
     // Update is called once per frame
     void Update()
     {
+        transform.position += moveSpeed * Time.deltaTime * -    transform.up;
+
+        if(Time.time - lifeStartTime > lifeLength)
+        {
+            DestroyObject();
+        }
+
+        /*
         // If target object is not null, move towards it
         if (targetObject != null)
         {
@@ -41,6 +58,21 @@ public class ProjectileBehaviour : MonoBehaviour
             }
         } else {
             Destroy(gameObject);
+        }
+        */
+    }
+    private void DestroyObject()
+    {
+        Debug.Log("I DIED");
+        Destroy(gameObject);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Monster")
+        {
+            Debug.Log("HIT MONSTER!");
+            collision.GetComponent<MonsterBehavior>().ProjectileHit();
+            DestroyObject();
         }
     }
 }

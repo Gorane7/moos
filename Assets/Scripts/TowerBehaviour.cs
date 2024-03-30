@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 [RequireComponent(typeof(LineRenderer))]
 public class TowerBehaviour : MonoBehaviour
@@ -14,14 +15,19 @@ public class TowerBehaviour : MonoBehaviour
     public GameObject objectToGenerate;
     
     public Vector3 size;
+    public float shootdelay = 1.0f;
+    private float lastshoottime = 0;
     private LevelManager levelManager;
     private Vector3 centerPosition;
     private float sleepInterval = 0.1f;
     private int vertexCount = 40;
     private LineRenderer lineRenderer;
+    public List<GameObject> monstersInRange;
+    public float shootangle = 180.0f;
 
     void Awake()
     {
+        monstersInRange = new List<GameObject>();
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.startWidth = lineWidth;
         lineRenderer.endWidth = lineWidth;
@@ -33,9 +39,9 @@ public class TowerBehaviour : MonoBehaviour
     {
         levelManager = LevelManager.main;
         centerPosition = transform.position;
-        StartCoroutine(GenerateObjects());
+        //StartCoroutine(GenerateObjects());
     }
-
+    
     IEnumerator GenerateObjects()
     {
         while (true)
@@ -96,7 +102,18 @@ public class TowerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DrawCircle();
+        //DrawCircle();
+        if (monstersInRange.Count != 0 && Time.time - lastshoottime > shootdelay)
+        {
+
+            Vector3 objectpos = monstersInRange[0].transform.position;
+            Vector3 vectorToTarget = objectpos - transform.position;
+            Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 180) * vectorToTarget;
+            Debug.Log(objectpos);
+            Debug.Log("Created Rocket!");
+            Instantiate(objectToGenerate, transform.position, Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget));
+            lastshoottime = Time.time;
+        }
     }
 
     void DrawCircle()
@@ -117,5 +134,15 @@ public class TowerBehaviour : MonoBehaviour
 
             theta += deltaTheta;
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Monster")) { return; }
+        monstersInRange.Add(collision.gameObject);
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Monster")) { return; }
+        monstersInRange.Remove(collision.gameObject);
     }
 }
