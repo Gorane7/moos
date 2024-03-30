@@ -23,6 +23,7 @@ public class ResourcePoint : MonoBehaviour
     private GameObject maincamera;
     private float elapsedTime = 0f;
     private float currencyAddInterval = 1f;
+    private float animationTick = 0;
 
     void Awake()
     {
@@ -58,6 +59,7 @@ public class ResourcePoint : MonoBehaviour
             }
         }
         if (connectionState == "Done") {
+            animationTick += 1;
             elapsedTime += Time.deltaTime;
             if (elapsedTime >= currencyAddInterval)
             {
@@ -96,7 +98,7 @@ public class ResourcePoint : MonoBehaviour
 
         Vector3 start = LevelManager.main.castle.transform.position;
         for (int i = 0; i < connectionLength + 1; i++) {
-            lineRenderer.SetPosition(i, start + growSpeed * i * direction + amplitude * Mathf.Sin(i * growSpeed * frequency) * crossDirection);
+            lineRenderer.SetPosition(i, start + growSpeed * i * direction + amplitude * Mathf.Sin((i + animationTick) * growSpeed * frequency) * crossDirection);
         }
 
         //float deltaTheta = (2f * Mathf.PI) / vertexCount;
