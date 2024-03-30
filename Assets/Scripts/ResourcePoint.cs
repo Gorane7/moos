@@ -65,7 +65,7 @@ public class ResourcePoint : MonoBehaviour
     {
         // Get the LineRenderer's material
         Material material = lineRenderer.material;
-        Debug.Log("Material: " + material);
+        //Debug.Log("Material: " + material);
 
         // Get the current color
         Color currentColor = material.color;

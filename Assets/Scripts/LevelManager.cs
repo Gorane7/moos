@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour {
     public static int baseHealth;
 
     public GameObject castle;
-    public List<GameObject> towers;
+    public List<Tower> towers;
     public GameObject[] caves;
     public List<GameObject> monsters;
     public List<GameObject> torches;
