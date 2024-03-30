@@ -15,4 +15,11 @@ public class TowerButton : MonoBehaviour{
             button.interactable = true;
         }
     }
+
+    public void setColour(Color newColor) {
+        Button button = gameObject.GetComponent<Button>();
+        ColorBlock colorBlock = button.colors;
+        colorBlock.normalColor = newColor;
+        button.colors = colorBlock;
+    }
 }
