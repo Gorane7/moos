@@ -8,15 +8,18 @@ public class LevelManager : MonoBehaviour {
 
     public GameObject castle;
     public GameObject cavePrefab;
+    public GameObject bossPrefab;
     public GameObject menhirPrefab;
 
     public List<Tower> towers;
-    private List<GameObject> towerButtons = new List<GameObject>();
+    public List<GameObject> towerButtons = new List<GameObject>();
     private List<GameObject> caves;
     private List<GameObject> menhirs;
     public List<GameObject> monsters;
     public List<GameObject> torches;
     private int currentHealth = baseHealth;
+
+    private GameObject boss;
 
     public int currency = 10;
 
@@ -29,8 +32,9 @@ public class LevelManager : MonoBehaviour {
         caves = new List<GameObject>();
         menhirs = new List<GameObject>();
         StartCoroutine(IncreaseCurrencyOverTime());
-        GenerateCaves(100);
-        GenerateMenhirs(100);
+        GenerateBoss();
+        GenerateCaves(150);
+        GenerateMenhirs(150);
     }
 
     IEnumerator IncreaseCurrencyOverTime()
@@ -42,22 +46,62 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
+    void GenerateBoss() {
+        float randomDirection = Random.Range(0f, 2f * Mathf.PI);
+        float randomDistance = 50f;
+
+        Debug.Log("Boss generation angle: " + randomDirection);
+
+        float x = randomDistance * Mathf.Cos(randomDirection);
+        float y = randomDistance * Mathf.Sin(randomDirection);
+
+        Vector3 randomPosition = new Vector3(x, y, 0f);
+        boss = Instantiate(bossPrefab, randomPosition, Quaternion.identity);
+        Debug.Log("Boss generated at: " + boss.transform.position);
+    }
+
     void GenerateCaves(int numberOfCaves)
     {
         for (int i = 0; i < numberOfCaves; i++)
         {
-            float randomDirection = Random.Range(0f, 2f * Mathf.PI);
-
-            // Generate random distance within some range
+            float randomDirection;
             float randomDistance = 0f;
-            while (randomDistance < 10f) {
-                randomDistance = Random.Range(0f, 1f);
-                randomDistance = 1 - Mathf.Pow(randomDistance, 4);
-                randomDistance *= 100f;
+            float x, y;
+            while (true) {
+                randomDirection = Random.Range(0f, 2f * Mathf.PI);
+                if (Random.Range(0f, 1f) < 0.5f) {
+                    // Generate near boss
+                    randomDistance = Random.Range(0f, 1f);
+                    randomDistance = Mathf.Pow(randomDistance, 1);
+                    randomDistance *= 50f;
+                    x = randomDistance * Mathf.Cos(randomDirection);
+                    y = randomDistance * Mathf.Sin(randomDirection);
+                    x += boss.transform.position.x;
+                    y += boss.transform.position.y;
+                } else {
+                    while (randomDistance < 10f) {
+                        randomDistance = Random.Range(0f, 1f);
+                        randomDistance = 1 - Mathf.Pow(randomDistance, 3);
+                        randomDistance *= 50f;
+                    }
+                    x = randomDistance * Mathf.Cos(randomDirection);
+                    y = randomDistance * Mathf.Sin(randomDirection);
+                }
+                
+                bool works = true;
+                if (Mathf.Pow(x - boss.transform.position.x, 2)+ Mathf.Pow(y - boss.transform.position.y, 2) < 5f) {
+                    works = false;
+                }
+                foreach(GameObject cave in caves) {
+                    if (Mathf.Pow(x - cave.transform.position.x, 2)+ Mathf.Pow(y - cave.transform.position.y, 2) < 5f) {
+                        works = false;
+                    }
+                }
+                if (works) {
+                    break;
+                }
             }
-
-            float x = randomDistance * Mathf.Cos(randomDirection);
-            float y = randomDistance * Mathf.Sin(randomDirection);
+            
 
             // Generate random position within some range
             Vector3 randomPosition = new Vector3(x, y, 0f);
@@ -74,18 +118,49 @@ public class LevelManager : MonoBehaviour {
     {
         for (int i = 0; i < numberOfCaves; i++)
         {
-            float randomDirection = Random.Range(0f, 2f * Mathf.PI);
 
-            // Generate random distance within some range
+            float randomDirection;
             float randomDistance = 0f;
-            while (randomDistance < 5f) {
-                randomDistance = Random.Range(0f, 1f);
-                randomDistance = 1 - Mathf.Pow(randomDistance, 4);
-                randomDistance *= 50f;
-            }
+            float x, y;
+            while (true) {
+                randomDirection = Random.Range(0f, 2f * Mathf.PI);
+                if (Random.Range(0f, 1f) < 0.5f) {
+                    // Generate near boss
+                    randomDistance = Random.Range(0f, 1f);
+                    randomDistance = Mathf.Pow(randomDistance, 1);
+                    randomDistance *= 50f;
+                    x = randomDistance * Mathf.Cos(randomDirection);
+                    y = randomDistance * Mathf.Sin(randomDirection);
+                    x += boss.transform.position.x;
+                    y += boss.transform.position.y;
+                } else {
+                    while (randomDistance < 5f) {
+                        randomDistance = Random.Range(0f, 1f);
+                        randomDistance = 1 - Mathf.Pow(randomDistance, 3);
+                        randomDistance *= 50f;
+                    }
+                    x = randomDistance * Mathf.Cos(randomDirection);
+                    y = randomDistance * Mathf.Sin(randomDirection);
+                }
 
-            float x = randomDistance * Mathf.Cos(randomDirection);
-            float y = randomDistance * Mathf.Sin(randomDirection);
+                bool works = true;
+                if (Mathf.Pow(x - boss.transform.position.x, 2)+ Mathf.Pow(y - boss.transform.position.y, 2) < 25f) {
+                    works = false;
+                }
+                foreach(GameObject cave in caves) {
+                    if (Mathf.Pow(x - cave.transform.position.x, 2)+ Mathf.Pow(y - cave.transform.position.y, 2) < 5f) {
+                        works = false;
+                    }
+                }
+                foreach(GameObject menhir in menhirs) {
+                    if (Mathf.Pow(x - menhir.transform.position.x, 2)+ Mathf.Pow(y - menhir.transform.position.y, 2) < 5f) {
+                        works = false;
+                    }
+                }
+                if (works) {
+                    break;
+                }
+            }
 
             // Generate random position within some range
             Vector3 randomPosition = new Vector3(x, y, 0f);

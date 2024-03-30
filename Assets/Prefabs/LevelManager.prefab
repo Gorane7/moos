@@ -49,6 +49,9 @@ MonoBehaviour:
   cavePrefab: {fileID: 3427281483446862054, guid: 2ffb0a44367a6afe8991bf3051de059b, type: 3}
   menhirPrefab: {fileID: 5640790568922471749, guid: a872ef851d81db84393a50b75aa3b417, type: 3}
   towers: []
+  towerButtons:
+  - {fileID: 0}
+  - {fileID: 0}
   monsters:
   - {fileID: 4820875501583579615, guid: 160234e2aab4d982fa5db88c9001e9bb, type: 3}
   torches: []
