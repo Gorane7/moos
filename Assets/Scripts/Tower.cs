@@ -32,4 +32,20 @@ public class Tower {
     public void Increment() {
         stageAmount += 1;
     }
+
+    public bool AtFinalStage() {
+        return stageAmount == (prefabs.Length - 1);
+    }
+
+    public string GetName() {
+        return name;
+    }
+
+    public int GetCost() {
+        return cost;
+    }
+
+    public GameObject[] GetPrefabs() {
+        return prefabs;
+    }
 }

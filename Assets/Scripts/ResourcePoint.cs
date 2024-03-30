@@ -21,6 +21,8 @@ public class ResourcePoint : MonoBehaviour
     private LineRenderer lineRenderer;
     private float opacity = 1f;
     private GameObject maincamera;
+    private float elapsedTime = 0f;
+    private float currencyAddInterval = 1f;
 
     void Awake()
     {
@@ -56,7 +58,12 @@ public class ResourcePoint : MonoBehaviour
             }
         }
         if (connectionState == "Done") {
-            LevelManager.main.AddCurrency(1);
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime >= currencyAddInterval)
+            {
+                elapsedTime = 0f;
+                LevelManager.main.AddCurrency(1);
+            }
         }
         DrawConnection();
     }

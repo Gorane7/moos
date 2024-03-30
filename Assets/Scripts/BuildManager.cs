@@ -16,7 +16,8 @@ public class BuildManager : MonoBehaviour {
     }
 
     public Tower GetSelectedTower() {
-        return towers[selectedTower];
+        Tower current = towers[selectedTower];
+        return new Tower(current.GetName(), current.GetCost(), current.GetPrefabs());
     }
 
     public void SetSelectedTower(int _selectedTower) {

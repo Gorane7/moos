@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour {
     public List<GameObject> torches;
     private int currentHealth = baseHealth;
 
-    public int currency = 100;
+    public int currency = 10;
 
     private void Awake() {
         main = this;
@@ -23,6 +23,16 @@ public class LevelManager : MonoBehaviour {
 
     void Start()
     {
+        StartCoroutine(IncreaseCurrencyOverTime());
+    }
+
+    IEnumerator IncreaseCurrencyOverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f); // Wait for 1 second
+            AddCurrency(1);
+        }
     }
     
 
@@ -48,6 +58,10 @@ public class LevelManager : MonoBehaviour {
     public void SpendCurrency(int costAmount) {
         currency -= costAmount;
         UpdateButtons();
+    }
+
+    public int GetCurrency() {
+        return currency;
     }
 
     public void UpdateButtons() {
