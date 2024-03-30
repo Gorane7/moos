@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -365868605207854111}
   m_Layer: 0
   m_Name: boss
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2199, y: 0.2199, z: 0.2199}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c893b4fb167260052b5ab54e5bcce210, type: 3}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 21300000, guid: 54e747e803832434fba69e20f7c7fb79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!58 &8839257386860343383
 CircleCollider2D:
@@ -119,9 +119,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.45470008, y: 0.06411389}
+  m_Offset: {x: 0, y: 1.0774305}
   serializedVersion: 2
-  m_Radius: 1.4578887
+  m_Radius: 2.1930614
 --- !u!95 &3570017801479603315
 Animator:
   serializedVersion: 5
@@ -132,7 +132,7 @@ Animator:
   m_GameObject: {fileID: 4820875501583579615}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 11bad01298ed28b4090afcc87440786e, type: 2}
+  m_Controller: {fileID: 9100000, guid: b8304dbad321ed745bb073dd2c45ca6a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

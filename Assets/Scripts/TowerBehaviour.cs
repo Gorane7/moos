@@ -23,7 +23,9 @@ public class TowerBehaviour : MonoBehaviour
     private int vertexCount = 40;
     private LineRenderer lineRenderer;
     public List<GameObject> monstersInRange;
+    public List<GameObject> torches = new List<GameObject>();
     public float shootangle = 180.0f;
+    private bool isVisible= false;
 
     void Awake()
     {
@@ -103,14 +105,12 @@ public class TowerBehaviour : MonoBehaviour
     void Update()
     {
         //DrawCircle();
-        if (monstersInRange.Count != 0 && Time.time - lastshoottime > shootdelay)
+        if (monstersInRange.Count != 0 && Time.time - lastshoottime > shootdelay && isVisible)
         {
 
             Vector3 objectpos = monstersInRange[0].transform.position;
             Vector3 vectorToTarget = objectpos - transform.position;
-            Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 180) * vectorToTarget;
-            Debug.Log(objectpos);
-            Debug.Log("Created Rocket!");
+            Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 180) * vectorToTarget;  
             Instantiate(objectToGenerate, transform.position, Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget));
             lastshoottime = Time.time;
         }
@@ -137,11 +137,24 @@ public class TowerBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Torch"))
+        {
+            isVisible = true;
+            torches.Add(collision.gameObject);
+        }
         if (!collision.CompareTag("Monster")) { return; }
         monstersInRange.Add(collision.gameObject);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.CompareTag("Torch"))
+        {
+            torches.Remove(collision.gameObject);
+            if (torches.Count == 0)
+            {
+                isVisible = false;
+            }
+        }
         if (!collision.CompareTag("Monster")) { return; }
         monstersInRange.Remove(collision.gameObject);
     }

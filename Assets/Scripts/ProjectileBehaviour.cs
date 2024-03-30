@@ -63,14 +63,13 @@ public class ProjectileBehaviour : MonoBehaviour
     }
     private void DestroyObject()
     {
-        Debug.Log("I DIED");
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Monster")
         {
-            Debug.Log("HIT MONSTER!");
+           
             collision.GetComponent<MonsterBehavior>().ProjectileHit();
             DestroyObject();
         }

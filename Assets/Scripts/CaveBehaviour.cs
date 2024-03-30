@@ -22,6 +22,7 @@ public class CaveBehaviour : MonoBehaviour {
 
     private void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
         //StartCoroutine(StartWave());
     }
 

@@ -31,8 +31,8 @@ public class ResourcePoint : MonoBehaviour
         lineRenderer.startWidth = lineWidth;
         lineRenderer.endWidth = lineWidth;
         lineRenderer.sortingOrder = 1;
-        lineRenderer.startColor = Color.red; // Example: Set to red
-        lineRenderer.endColor = Color.red;
+        //lineRenderer.startColor = Color.red; // Example: Set to red
+        //lineRenderer.endColor = Color.red;
     }
 
     void Start()
@@ -158,6 +158,10 @@ public class ResourcePoint : MonoBehaviour
         if (torches.Count == 0)
         {
             isVisible = false;
+            if (connectionState == "Advancing" || connectionState == "Done")
+            {
+                StartDying();
+            }
         }
 
     }

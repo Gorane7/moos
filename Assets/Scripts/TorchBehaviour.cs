@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
+using System.Drawing;
 
 public class TorchBehavior : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class TorchBehavior : MonoBehaviour
 
     private int currentHealth = baseHealth;
     private GameObject healthBarRed;
+    private RectTransform light;
 
 
     void Start()
@@ -26,14 +29,15 @@ public class TorchBehavior : MonoBehaviour
         //Vector3 redPosition = healthBarRed.transform.localPosition;
         //redPosition.y = 1.1f;
         //healthBarRed.transform.localPosition = redPosition;
-
+        light = GetComponentInChildren<RectTransform>();
         AdjustHealthBars();
     }
 
     public void MonsterHit() {
         currentHealth -= 1;
         if (currentHealth <= 0) {
-            LevelManager.main.RemoveTorch(gameObject);
+            light.transform.DOScale(0, 0.2f).OnComplete(() => LevelManager.main.RemoveTorch(gameObject));
+
         }
     }
 

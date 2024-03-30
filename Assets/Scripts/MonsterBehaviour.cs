@@ -24,10 +24,12 @@ public class MonsterBehavior : MonoBehaviour
     public float attackspeed = 1.0f;
     private float lastattacktime;
     private Animator animator;
+    private CircleCollider2D circleCollider;
 
 
     void Start()
     {
+        circleCollider = GetComponent<CircleCollider2D>();
         animator= GetComponent<Animator>();
         lastattacktime = Time.time; 
         castle = GameObject.FindGameObjectWithTag("Player");
@@ -87,7 +89,8 @@ public class MonsterBehavior : MonoBehaviour
         if (currentHealth <= 0) {
             animator.ResetTrigger("Surm");
             animator.SetTrigger("Surm");
-            GameObject.Destroy(gameObject, 1);
+            circleCollider.enabled = false;
+            GameObject.Destroy(gameObject, 0.7f);
         }
     }
     /*
