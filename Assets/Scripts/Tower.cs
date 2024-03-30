@@ -5,17 +5,31 @@ using UnityEngine;
 public class Tower {
     public string name;
     public int cost;
-    public GameObject prefab;
+    public GameObject[] prefabs;
 
     private GameObject currentObject;
+    private int stageAmount;
 
-    public Tower (string _name, int _cost, GameObject _prefab) {
+    public Tower (string _name, int _cost, GameObject[] _prefabs) {
         name = _name;
         cost = _cost;
-        prefab = _prefab;
+        prefabs = _prefabs;
+        stageAmount = 0;
     }
 
     public void SetCurrentObject(GameObject thisObject) {
         currentObject = thisObject;
+    }
+
+    public GameObject GetCurrentObject() {
+        return currentObject;
+    }
+
+    public GameObject GetCurrentPrefab() {
+        return prefabs[stageAmount < prefabs.Length ? stageAmount : prefabs.Length - 1];
+    }
+
+    public void Increment() {
+        stageAmount += 1;
     }
 }
