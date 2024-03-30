@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour {
     void Start()
     {
     }
+    
 
     public void RemoveMonster(GameObject monster) {
         if (monsters.Contains(monster)) {
@@ -28,13 +29,14 @@ public class LevelManager : MonoBehaviour {
             Destroy(monster);
         }
     }
+    /*
 
     private void Update() {
         if (Input.GetMouseButtonDown(0)) {
             OnMouseDown();
         }
     }
-
+    
     private void OnMouseDown() {
         // Gets the mouse position relative to camera and sets the z position to 0.
         var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -51,5 +53,5 @@ public class LevelManager : MonoBehaviour {
         // Creates the tower object that it builds and adds it to the list aswell.
         Tower towerToBuild = BuildManager.main.GetSelectedTower();
         towers.Add(Instantiate(towerToBuild.prefab, mouseWorldPos, Quaternion.identity));
-    }
+    }*/
 }

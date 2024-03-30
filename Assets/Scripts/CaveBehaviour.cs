@@ -17,12 +17,15 @@ public class CaveBehaviour : MonoBehaviour {
     private float timeSinceLastSpawn;
     private int enemiesLeftToSpawn;
     private bool isSpawning = false;
+    private SpriteRenderer spriteRenderer;
 
     private void Start() {
-        StartCoroutine(StartWave());
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        //StartCoroutine(StartWave());
     }
 
     private void Update() {
+
         if (!isSpawning) return;
 
         timeSinceLastSpawn += Time.deltaTime;
@@ -36,6 +39,12 @@ public class CaveBehaviour : MonoBehaviour {
         if (enemiesLeftToSpawn == 0) {
             EndWave();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag != "Torch") return;
+        if (!isSpawning) StartCoroutine(StartWave());
     }
 
     private IEnumerator StartWave() {
