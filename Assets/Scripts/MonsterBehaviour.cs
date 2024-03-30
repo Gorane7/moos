@@ -23,10 +23,12 @@ public class MonsterBehavior : MonoBehaviour
     public float towerAttackDistance= 20.0f;
     public float attackspeed = 1.0f;
     private float lastattacktime;
+    private Animator animator;
 
 
     void Start()
     {
+        animator= GetComponent<Animator>();
         lastattacktime = Time.time; 
         castle = GameObject.FindGameObjectWithTag("Player");
         healthBarRed = Instantiate(healthBarRedPrefab, transform.position, Quaternion.identity, transform);
@@ -70,6 +72,8 @@ public class MonsterBehavior : MonoBehaviour
             MoveTowardsTarget(TargetTorch.transform.position);
             if (distance < 0.5f && Time.time - lastattacktime > attackspeed)
             {
+                animator.ResetTrigger("Attack");
+                animator.SetTrigger("Attack");
                 TargetTorch.transform.parent.transform.parent.GetComponent<TorchBehavior>().MonsterHit();
                 lastattacktime = Time.time;
             } 
@@ -81,7 +85,9 @@ public class MonsterBehavior : MonoBehaviour
     public void ProjectileHit() {
         currentHealth -= 1;
         if (currentHealth <= 0) {
-            LevelManager.main.RemoveMonster(gameObject);
+            animator.ResetTrigger("Surm");
+            animator.SetTrigger("Surm");
+            GameObject.Destroy(gameObject, 1);
         }
     }
     /*
