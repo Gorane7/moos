@@ -7,10 +7,13 @@ public class LevelManager : MonoBehaviour {
     public static int baseHealth;
 
     public GameObject castle;
+    public GameObject cavePrefab;
+    public GameObject menhirPrefab;
 
     public List<Tower> towers;
     private List<GameObject> towerButtons = new List<GameObject>();
-    public GameObject[] caves;
+    private List<GameObject> caves;
+    private List<GameObject> menhirs;
     public List<GameObject> monsters;
     public List<GameObject> torches;
     private int currentHealth = baseHealth;
@@ -23,7 +26,11 @@ public class LevelManager : MonoBehaviour {
 
     void Start()
     {
+        caves = new List<GameObject>();
+        menhirs = new List<GameObject>();
         StartCoroutine(IncreaseCurrencyOverTime());
+        GenerateCaves(100);
+        GenerateMenhirs(100);
     }
 
     IEnumerator IncreaseCurrencyOverTime()
@@ -32,6 +39,62 @@ public class LevelManager : MonoBehaviour {
         {
             yield return new WaitForSeconds(1f); // Wait for 1 second
             AddCurrency(1);
+        }
+    }
+
+    void GenerateCaves(int numberOfCaves)
+    {
+        for (int i = 0; i < numberOfCaves; i++)
+        {
+            float randomDirection = Random.Range(0f, 2f * Mathf.PI);
+
+            // Generate random distance within some range
+            float randomDistance = 0f;
+            while (randomDistance < 10f) {
+                randomDistance = Random.Range(0f, 1f);
+                randomDistance = 1 - Mathf.Pow(randomDistance, 4);
+                randomDistance *= 100f;
+            }
+
+            float x = randomDistance * Mathf.Cos(randomDirection);
+            float y = randomDistance * Mathf.Sin(randomDirection);
+
+            // Generate random position within some range
+            Vector3 randomPosition = new Vector3(x, y, 0f);
+
+            // Instantiate a cave at the random position
+            GameObject newCave = Instantiate(cavePrefab, randomPosition, Quaternion.identity);
+
+            // Add the instantiated cave to the caves list
+            caves.Add(newCave);
+        }
+    }
+
+    void GenerateMenhirs(int numberOfCaves)
+    {
+        for (int i = 0; i < numberOfCaves; i++)
+        {
+            float randomDirection = Random.Range(0f, 2f * Mathf.PI);
+
+            // Generate random distance within some range
+            float randomDistance = 0f;
+            while (randomDistance < 5f) {
+                randomDistance = Random.Range(0f, 1f);
+                randomDistance = 1 - Mathf.Pow(randomDistance, 4);
+                randomDistance *= 50f;
+            }
+
+            float x = randomDistance * Mathf.Cos(randomDirection);
+            float y = randomDistance * Mathf.Sin(randomDirection);
+
+            // Generate random position within some range
+            Vector3 randomPosition = new Vector3(x, y, 0f);
+
+            // Instantiate a cave at the random position
+            GameObject newMenhir = Instantiate(menhirPrefab, randomPosition, Quaternion.identity);
+
+            // Add the instantiated cave to the caves list
+            menhirs.Add(newMenhir);
         }
     }
     
@@ -69,38 +132,4 @@ public class LevelManager : MonoBehaviour {
             button.GetComponent<TowerButton>().enableButton();
         }
     }
-
-    /*
-    private void Update() {
-        if (Input.GetMouseButtonDown(0)) {
-            OnMouseDown();
-        }
-    }
-    
-    private void OnMouseDown() {
-        // Gets the mouse position relative to camera and sets the z position to 0.
-        var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = 0f;
-
-        // Goes through towers and checks if there is a tower near the new one.
-        foreach (GameObject tower in towers) {
-            if (Vector3.Distance(mouseWorldPos, tower.transform.position) < 0.5f) {
-                // TODO: add build error return
-                return;
-            }
-        }
-
-        // Gets the tower to build.
-        Tower towerToBuild = BuildManager.main.GetSelectedTower();
-
-        // Cost check. If too expensive return if not then remove money.
-        if (towerToBuild.cost > currency) {
-            return;
-        } else {
-            SpendCurrency(towerToBuild.cost);
-        }
-
-        // Instantiates it and adds it to the list aswell.
-        towers.Add(Instantiate(towerToBuild.prefab, mouseWorldPos, Quaternion.identity));
-    }*/
 }
