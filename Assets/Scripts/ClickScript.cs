@@ -21,11 +21,27 @@ public class ClickScript : MonoBehaviour
                     LevelManager.main.SpendCurrency(5);
                     Vector3 mousePos = Input.mousePosition;
                     Vector3 objectPos = Camera.main.ScreenToWorldPoint(mousePos);
+                    Debug.Log("Clicked at: " + objectPos);
                     objectPos.z = 0f;
-                    float distance = Vector3.Distance(new Vector3(0, 0, 0), objectPos);
 
+                    float distance = Vector3.Distance(new Vector3(0, 0, 0), objectPos);
                     GameObject projectile = Instantiate(emptytorch, new Vector3(0, 0, 0), Quaternion.LookRotation(forward: Vector3.forward, upwards: Quaternion.Euler(0, 0, 180) * objectPos));
                     projectile.transform.DOMove(objectPos, distance / projectileSpeed).SetEase(Ease.Linear).OnComplete(() => ExplodeProjectile(projectile, objectPos));
+                    /*float offsetRange = 2.5f;
+                    for (int i = 0; i < 15; i++)
+                    {
+                        // Generate random offsets within the defined range
+                        float offsetX = Random.Range(-offsetRange, offsetRange);
+                        float offsetY = Random.Range(-offsetRange, offsetRange);
+
+                        // Calculate the random position around the clicked coordinate
+                        Vector3 thisObjectPos = new Vector3(objectPos.x + offsetX, objectPos.y + offsetY, 0f);
+
+                        // Calculate distance and spawn the torch
+                        float distance = Vector3.Distance(Vector3.zero, thisObjectPos);
+                        GameObject projectile = Instantiate(emptytorch, new Vector3(0, 0, 0), Quaternion.LookRotation(forward: Vector3.forward, upwards: Quaternion.Euler(0, 0, 180) * thisObjectPos));
+                        projectile.transform.DOMove(thisObjectPos, distance / projectileSpeed).SetEase(Ease.Linear).OnComplete(() => ExplodeProjectile(projectile, thisObjectPos));
+                    }*/
                 }
                 
             }
