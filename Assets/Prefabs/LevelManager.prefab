@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b0aee2516bba348921cb74a6fba10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castle: {fileID: 0}
+  castle: {fileID: 2098366713822403725, guid: 8856b02a16b7b97738ccc2b87d9af69c, type: 3}
   towers: []
   caves:
   - {fileID: 0}
