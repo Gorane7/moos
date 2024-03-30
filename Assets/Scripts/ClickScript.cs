@@ -49,8 +49,22 @@ public class ClickScript : MonoBehaviour
     {
         GameObject.Destroy(thingtodestroy);
 
+        foreach (Tower towerInList in LevelManager.main.towers)
+        {
+            // Check if the tower's currentObject is close to positionToCreate
+            if (Vector3.Distance(towerInList.GetCurrentObject().transform.position, positiontocreate) < 3f)
+            {
+                towerInList.Increment();
+                GameObject currentObject = towerInList.GetCurrentObject();
+                GameObject newPrefab = Instantiate(towerInList.GetCurrentPrefab(), currentObject.transform.position, Quaternion.identity);
+                Destroy(currentObject);
+                towerInList.SetCurrentObject(newPrefab);
+                return;
+            }
+        }
+
         Tower tower = BuildManager.main.GetSelectedTower();
-        GameObject currentPrefab = Instantiate(tower.prefab, positiontocreate, Quaternion.identity);
+        GameObject currentPrefab = Instantiate(tower.prefabs[0], positiontocreate, Quaternion.identity);
         tower.SetCurrentObject(currentPrefab);
         LevelManager.main.towers.Add(tower);
         
