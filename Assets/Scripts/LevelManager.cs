@@ -102,14 +102,14 @@ public class LevelManager : MonoBehaviour {
     public void RemoveMonster(GameObject monster) {
         if (monsters.Contains(monster)) {
             monsters.Remove(monster);
-            Destroy(monster);
+            GameObject.Destroy(monster);
         }
     }
 
     public void RemoveTorch(GameObject torch) {
         if (torches.Contains(torch)) {
             torches.Remove(torch);
-            Destroy(torch);
+            GameObject.Destroy(torch);
         }
     }
 
