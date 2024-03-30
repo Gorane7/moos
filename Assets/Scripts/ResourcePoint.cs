@@ -12,6 +12,7 @@ public class ResourcePoint : MonoBehaviour
     [SerializeField] private float frequency = 0.1f;
     [SerializeField] private float amplitude = 1f;
     [SerializeField] private float dieSpeed = 0.001f;
+    public List<GameObject> torches = new List<GameObject>();
 
     private SpriteRenderer spriteRenderer;
     private bool isVisible;
@@ -19,6 +20,7 @@ public class ResourcePoint : MonoBehaviour
     private int connectionLength = 0;
     private LineRenderer lineRenderer;
     private float opacity = 1f;
+    private GameObject maincamera;
 
     void Awake()
     {
@@ -32,6 +34,7 @@ public class ResourcePoint : MonoBehaviour
 
     void Start()
     {
+        maincamera = GameObject.Find("Main Camera");
         spriteRenderer = GetComponent<SpriteRenderer>();
         isVisible = false;
     }
@@ -83,7 +86,7 @@ public class ResourcePoint : MonoBehaviour
 
         Vector3 start = LevelManager.main.castle.transform.position;
         for (int i = 0; i < connectionLength + 1; i++) {
-            lineRenderer.SetPosition(i, start + i * direction * growSpeed + Mathf.Sin(i * growSpeed * frequency) * crossDirection * amplitude);
+            lineRenderer.SetPosition(i, start + growSpeed * i * direction + amplitude * Mathf.Sin(i * growSpeed * frequency) * crossDirection);
         }
 
         //float deltaTheta = (2f * Mathf.PI) / vertexCount;
@@ -108,6 +111,7 @@ public class ResourcePoint : MonoBehaviour
     private void OnMouseDown()
     {
         if (!isVisible) return;
+        maincamera.GetComponent<ClickScript>().SetClickedTrue();
         Debug.Log("Got CLICK");
         if (connectionState == "None") {
             connectionState = "Advancing";
@@ -119,24 +123,31 @@ public class ResourcePoint : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        print(isVisible);
         if (!isVisible) return;
         spriteRenderer.color = Color.red;
     }
 
     private void OnMouseExit()
     {
-        print(isVisible);
         if (!isVisible) return;
-        Debug.Log("EXIT");
         spriteRenderer.color = Color.white;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Light!");
-        if (collision.tag != "Torch") return;
+        if (!collision.CompareTag("Torch")) return;
         isVisible = true;
+        torches.Add(collision.gameObject);
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Torch")) return;
+        torches.Remove(collision.gameObject);
+        if (torches.Count == 0)
+        {
+            isVisible = false;
+        }
+
     }
 
 
