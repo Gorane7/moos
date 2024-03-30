@@ -158,5 +158,6 @@ MonoBehaviour:
   healthBarRedPrefab: {fileID: 6633592109842108472, guid: 37aedec9ca15411bbbeb93af47d82350, type: 3}
   healthBarGreenPrefab: {fileID: 2510827303244524909, guid: e4c0675c8537985be900244a93dd081c, type: 3}
   moveSpeed: 2
+  discoverMessagePrefab: {fileID: 5533867029271997935, guid: 0cd497cd98d877c4b8adffae2525d5c5, type: 3}
   towerAttackDistance: 20
   attackspeed: 1

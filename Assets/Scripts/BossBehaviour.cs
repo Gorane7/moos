@@ -14,6 +14,7 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
 
     [SerializeField] private static int baseHealth = 15;
+    [SerializeField] public GameObject discoverMessagePrefab;
 
     private int currentHealth = baseHealth;
     private GameObject healthBarRed;
@@ -26,6 +27,9 @@ public class BossBehavior : MonoBehaviour
 
     private bool activated;
 
+    private float showMessage = 5f;
+
+    private GameObject discoverMessage;
 
     void Start()
     {
@@ -38,6 +42,12 @@ public class BossBehavior : MonoBehaviour
     {
         if (!activated) {
             return;
+        } else {
+            // After 5 seconds deenables the canvas component that says "You have angered the gods"
+            if (showMessage <= 0) {
+                discoverMessage.GetComponent<Canvas>().enabled = false;
+            }
+            showMessage -= Time.deltaTime;
         }
         float distance = Vector3.Distance(transform.position, new Vector3(0, 0, 0));
         MoveTowardsTarget(new Vector3(0, 0, 0));
@@ -95,7 +105,11 @@ public class BossBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (activated) return;
         if (collision.tag != "Torch") return;
         activated = true;
+        // Creates the Angered gods message
+        discoverMessage = Instantiate(discoverMessagePrefab);
+        discoverMessage.GetComponent<Canvas>().enabled = true;
     }
 }
