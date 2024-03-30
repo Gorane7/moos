@@ -31,7 +31,7 @@ public class MonsterBehavior : MonoBehaviour
         animator= GetComponent<Animator>();
         lastattacktime = Time.time; 
         castle = GameObject.FindGameObjectWithTag("Player");
-        healthBarRed = Instantiate(healthBarRedPrefab, transform.position, Quaternion.identity, transform);
+        /*healthBarRed = Instantiate(healthBarRedPrefab, transform.position, Quaternion.identity, transform);
 
         Vector3 redScale = healthBarRed.transform.localScale;
         redScale.y = 0.1f;
@@ -39,10 +39,10 @@ public class MonsterBehavior : MonoBehaviour
 
         Vector3 redPosition = healthBarRed.transform.localPosition;
         redPosition.y = 1.1f;
-        healthBarRed.transform.localPosition = redPosition;
+        healthBarRed.transform.localPosition = redPosition;*/
 
         //healthBarGreen = Instantiate(healthBarGreenPrefab, transform.position, Quaternion.identity, transform);
-        AdjustHealthBars();
+        //AdjustHealthBars();
     }
     private void Update()
     {
