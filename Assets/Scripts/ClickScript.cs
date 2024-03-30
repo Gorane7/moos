@@ -17,23 +17,31 @@ public class ClickScript : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Vector3 mousePos = Input.mousePosition;
-                Vector3 objectPos = Camera.main.ScreenToWorldPoint(mousePos);
-                objectPos.z = 0f;
-                float distance = Vector3.Distance(new Vector3(0, 0, 0), objectPos);
+                if (LevelManager.main.GetCurrency() >= 5) {
+                    LevelManager.main.SpendCurrency(5);
+                    Vector3 mousePos = Input.mousePosition;
+                    Vector3 objectPos = Camera.main.ScreenToWorldPoint(mousePos);
+                    objectPos.z = 0f;
+                    float distance = Vector3.Distance(new Vector3(0, 0, 0), objectPos);
 
-                GameObject projectile = Instantiate(emptytorch, new Vector3(0, 0, 0), Quaternion.LookRotation(forward: Vector3.forward, upwards: Quaternion.Euler(0, 0, 180) * objectPos));
-                projectile.transform.DOMove(objectPos, distance / projectileSpeed).SetEase(Ease.Linear).OnComplete(() => ExplodeProjectile(projectile, objectPos));
+                    GameObject projectile = Instantiate(emptytorch, new Vector3(0, 0, 0), Quaternion.LookRotation(forward: Vector3.forward, upwards: Quaternion.Euler(0, 0, 180) * objectPos));
+                    projectile.transform.DOMove(objectPos, distance / projectileSpeed).SetEase(Ease.Linear).OnComplete(() => ExplodeProjectile(projectile, objectPos));
+                }
+                
             }
             if (Input.GetMouseButtonDown(1)) {
                 Debug.Log("Clicked right mouse button");
-                Vector3 mousePos = Input.mousePosition;
-                Vector3 objectPos = Camera.main.ScreenToWorldPoint(mousePos);
-                objectPos.z = 0f;
-                float distance = Vector3.Distance(new Vector3(0, 0, 0), objectPos);
+                if (LevelManager.main.GetCurrency() >= 10) {
+                    LevelManager.main.SpendCurrency(10);
+                    Vector3 mousePos = Input.mousePosition;
+                    Vector3 objectPos = Camera.main.ScreenToWorldPoint(mousePos);
+                    objectPos.z = 0f;
+                    float distance = Vector3.Distance(new Vector3(0, 0, 0), objectPos);
 
-                GameObject projectile = Instantiate(towerPart, new Vector3(0, 0, 0), Quaternion.LookRotation(forward: Vector3.forward, upwards: Quaternion.Euler(0, 0, 180) * objectPos));
-                projectile.transform.DOMove(objectPos, distance / projectileSpeed).SetEase(Ease.Linear).OnComplete(() => ExplodeProjectileTower(projectile, objectPos));
+                    GameObject projectile = Instantiate(towerPart, new Vector3(0, 0, 0), Quaternion.LookRotation(forward: Vector3.forward, upwards: Quaternion.Euler(0, 0, 180) * objectPos));
+                    projectile.transform.DOMove(objectPos, distance / projectileSpeed).SetEase(Ease.Linear).OnComplete(() => ExplodeProjectileTower(projectile, objectPos));
+                }
+                
             }
         }
         else { clicked = false; }
@@ -50,10 +58,10 @@ public class ClickScript : MonoBehaviour
         GameObject.Destroy(thingtodestroy);
         Debug.Log("Attempting to create tower at " + positiontocreate);
 
-        if (BuildManager.main.GetSelectedTower().GetCost() > LevelManager.main.currency) {
+        /*if (BuildManager.main.GetSelectedTower().GetCost() > LevelManager.main.currency) {
             Debug.Log("Not enough money to create or upgrade tower");
             return;
-        }
+        }*/
 
         foreach (Tower towerInList in LevelManager.main.towers)
         {

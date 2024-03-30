@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a58e8f776d58265b9b28001dcc13ee08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -98,11 +98,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c0ca0c3a3412f4e96c8bdcce6b78ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs: []
+  enemyPrefabs:
+  - {fileID: 4820875501583579615, guid: 160234e2aab4d982fa5db88c9001e9bb, type: 3}
   baseEnemies: 8
   enemiesPerSecond: 0.5
   timeBetweenWaves: 5
   scalingFactor: 0.75
+  torches: []
 --- !u!58 &8634765624352343018
 CircleCollider2D:
   m_ObjectHideFlags: 0

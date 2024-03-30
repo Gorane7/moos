@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1453189516803942597}
   - component: {fileID: -5210894797771302762}
   - component: {fileID: -1484579489109510988}
+  - component: {fileID: 551783716935565271}
   m_Layer: 0
   m_Name: Torch
   m_TagString: Untagged
@@ -135,6 +136,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &551783716935565271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45769304530444253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47191d75f29b49a04a71b682cc835327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarRedPrefab: {fileID: 6633592109842108472, guid: 37aedec9ca15411bbbeb93af47d82350, type: 3}
 --- !u!1 &1185897981683899766
 GameObject:
   m_ObjectHideFlags: 0
