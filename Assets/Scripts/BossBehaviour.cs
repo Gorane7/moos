@@ -13,14 +13,15 @@ public class BossBehavior : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 5f;
 
-    [SerializeField] private static int baseHealth = 15;
+    [SerializeField] private static int baseHealth = 55;
     [SerializeField] public GameObject discoverMessagePrefab;
+    [SerializeField] public GameObject victoryMessagePrefab;
 
     private int currentHealth = baseHealth;
     private GameObject healthBarRed;
     private GameObject healthBarGreen;
     private GameObject castle;
-    public float towerAttackDistance= 20.0f;
+    public float towerAttackDistance = 20.0f;
     public float attackspeed = 1.0f;
     private float lastattacktime;
     private Animator animator;
@@ -30,6 +31,7 @@ public class BossBehavior : MonoBehaviour
     private float showMessage = 5f;
 
     private GameObject discoverMessage;
+    private GameObject victoryMessage;
 
     void Start()
     {
@@ -51,6 +53,7 @@ public class BossBehavior : MonoBehaviour
         }
         float distance = Vector3.Distance(transform.position, new Vector3(0, 0, 0));
         MoveTowardsTarget(new Vector3(0, 0, 0));
+        //ProjectileHit();
         if (distance < 0.5f && Time.time - lastattacktime > attackspeed)
         {
             castle.GetComponent<CastleBehavior>().MonsterHit();
@@ -64,6 +67,8 @@ public class BossBehavior : MonoBehaviour
         if (currentHealth <= 0) {
             animator.ResetTrigger("Surm");
             animator.SetTrigger("Surm");
+            victoryMessage = Instantiate(victoryMessagePrefab);
+            victoryMessage.GetComponent<Canvas>().enabled = true;
             GameObject.Destroy(gameObject, 1);
         }
     }
