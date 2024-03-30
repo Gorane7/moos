@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour {
     public List<GameObject> towers;
     public GameObject[] caves;
     public List<GameObject> monsters;
+    public List<GameObject> torches;
     private int currentHealth = baseHealth;
 
     public int currency = 100;
@@ -29,6 +30,14 @@ public class LevelManager : MonoBehaviour {
             Destroy(monster);
         }
     }
+
+    public void RemoveTorch(GameObject torch) {
+        if (torches.Contains(torch)) {
+            torches.Remove(torch);
+            Destroy(torch);
+        }
+    }
+
     /*
 
     private void Update() {

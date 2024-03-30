@@ -27,7 +27,7 @@ public class ClickScript : MonoBehaviour
     private void ExplodeProjectile(GameObject thingtodestroy, Vector3 positiontocreate)
     {
         GameObject.Destroy(thingtodestroy);
-        Instantiate(torch, positiontocreate, Quaternion.identity);
-
+        GameObject t = Instantiate(torch, positiontocreate, Quaternion.identity);
+        LevelManager.main.torches.Add(t);
     }
 }
