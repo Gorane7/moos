@@ -18,12 +18,14 @@ public class MonsterBehavior : MonoBehaviour
     private int currentHealth = baseHealth;
     private GameObject healthBarRed;
     private GameObject healthBarGreen;
+    private GameObject castle;
     public List<GameObject> torches = new List<GameObject>();
     public float towerAttackDistance= 20.0f;
 
 
     void Start()
     {
+        castle = GameObject.FindGameObjectWithTag("Player");
         healthBarRed = Instantiate(healthBarRedPrefab, transform.position, Quaternion.identity, transform);
 
         Vector3 redScale = healthBarRed.transform.localScale;
@@ -45,7 +47,7 @@ public class MonsterBehavior : MonoBehaviour
             MoveTowardsTarget(new Vector3(0, 0, 0));
             if (distance < 0.5f)
             {
-
+                castle.GetComponent<CastleBehavior>().MonsterHit();
             }
         }
         else
@@ -64,7 +66,7 @@ public class MonsterBehavior : MonoBehaviour
             MoveTowardsTarget(TargetTorch.transform.position);
             if (distance < 0.5f)
             {
-
+                TargetTorch.transform.parent.transform.parent.GetComponent<TorchBehavior>().MonsterHit();
             }
 
         }

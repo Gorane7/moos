@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2108051582706877167}
   - component: {fileID: 2371175831479047512}
   - component: {fileID: 42708609452478891}
+  - component: {fileID: 8839257386860343383}
   m_Layer: 0
   m_Name: monster
   m_TagString: Untagged
@@ -100,3 +101,40 @@ MonoBehaviour:
   healthBarRedPrefab: {fileID: 6633592109842108472, guid: 37aedec9ca15411bbbeb93af47d82350, type: 3}
   healthBarGreenPrefab: {fileID: 2510827303244524909, guid: e4c0675c8537985be900244a93dd081c, type: 3}
   moveSpeed: 1
+  torches: []
+  towerAttackDistance: 2
+--- !u!58 &8839257386860343383
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4820875501583579615}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.13581753, y: -0.077610254}
+  serializedVersion: 2
+  m_Radius: 0.4303875
