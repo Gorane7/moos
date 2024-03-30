@@ -11,7 +11,7 @@ public class ClickScript : MonoBehaviour
     public float projectileSpeed = 1.0f;
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             Vector3 mousePos = Input.mousePosition;
             Vector3 objectPos = Camera.main.ScreenToWorldPoint(mousePos);
