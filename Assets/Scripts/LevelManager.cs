@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour {
     public GameObject menhirPrefab;
 
     public List<Tower> towers;
-    private List<GameObject> towerButtons = new List<GameObject>();
+    public List<GameObject> towerButtons = new List<GameObject>();
     private List<GameObject> caves;
     private List<GameObject> menhirs;
     public List<GameObject> monsters;
