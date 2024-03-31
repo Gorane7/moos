@@ -28,6 +28,7 @@ public class LevelManager : MonoBehaviour {
     public int currency = 10;
 
     private float mapSize = 35f;
+    private int menhirAmount = 0;
 
     private void Awake() {
         main = this;
@@ -56,7 +57,7 @@ public class LevelManager : MonoBehaviour {
 
     void GenerateBoss() {
         float randomDirection = Random.Range(0f, 2f * Mathf.PI);
-        float randomDistance = mapSize / 3;
+        float randomDistance = mapSize;
 
         Debug.Log("Boss generation angle: " + randomDirection);
 
@@ -293,5 +294,17 @@ public class LevelManager : MonoBehaviour {
         foreach (GameObject button in towerButtons) {
             button.GetComponent<TowerButton>().enableButton();
         }
+    }
+
+    public void AddMenhir() {
+        menhirAmount += 1;
+    }
+
+    public void RemoveMenhir() {
+        menhirAmount -= 1;
+    }
+
+    public int GetMenhirAmount() {
+        return menhirAmount;
     }
 }

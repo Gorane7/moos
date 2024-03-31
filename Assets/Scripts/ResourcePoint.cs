@@ -47,8 +47,9 @@ public class ResourcePoint : MonoBehaviour
     void Update()
     {
         if (connectionState == "Advancing") {
-            connectionLength += 1;
+            connectionLength += 1 + LevelManager.main.GetMenhirAmount();
             if (connectionLength * growSpeed >= (transform.position - LevelManager.main.castle.transform.position).magnitude) {
+                LevelManager.main.AddMenhir();
                 connectionState = "Done";
             }
         }
@@ -120,6 +121,7 @@ public class ResourcePoint : MonoBehaviour
 
     private void StartDying() {
         connectionState = "Dying";
+        LevelManager.main.RemoveMenhir();
     }
 
     private void OnMouseDown()
