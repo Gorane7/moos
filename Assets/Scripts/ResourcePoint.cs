@@ -120,8 +120,10 @@ public class ResourcePoint : MonoBehaviour
     }
 
     private void StartDying() {
+        if (connectionState == "Done") {
+            LevelManager.main.RemoveMenhir();
+        }
         connectionState = "Dying";
-        LevelManager.main.RemoveMenhir();
     }
 
     private void OnMouseDown()
