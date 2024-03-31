@@ -142,7 +142,7 @@ public class TowerBehaviour : MonoBehaviour
             isVisible = true;
             torches.Add(collision.gameObject);
         }
-        if (!collision.CompareTag("Monster")) { return; }
+        if (!collision.CompareTag("Monster") && !collision.CompareTag("Boss")) { return; }
         monstersInRange.Add(collision.gameObject);
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -155,7 +155,7 @@ public class TowerBehaviour : MonoBehaviour
                 isVisible = false;
             }
         }
-        if (!collision.CompareTag("Monster")) { return; }
+        if (!collision.CompareTag("Monster") && !collision.CompareTag("Boss")) { return; }
         monstersInRange.Remove(collision.gameObject);
     }
 }
