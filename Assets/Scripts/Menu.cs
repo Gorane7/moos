@@ -7,6 +7,7 @@ using DG.Tweening;
 public class Menu : MonoBehaviour {
     [Header("References")]
     [SerializeField] TextMeshProUGUI currencyUI;
+    [SerializeField] TextMeshProUGUI healthUI;
 
     private bool isMenuOpen = true;
 
@@ -25,5 +26,6 @@ public class Menu : MonoBehaviour {
 
     private void OnGUI(){
         currencyUI.text = LevelManager.main.currency.ToString();
+        healthUI.text = LevelManager.main.castle.GetComponent<CastleBehavior>().GetHealth().ToString();
     }
 }
