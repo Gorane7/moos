@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8839257386860343383}
   - component: {fileID: 3570017801479603315}
   - component: {fileID: -365868605207854111}
+  - component: {fileID: 3045340589722333833}
   m_Layer: 0
   m_Name: boss
   m_TagString: Monster
@@ -162,3 +163,30 @@ MonoBehaviour:
   victoryMessagePrefab: {fileID: 5533867029271997935, guid: 702970aee55498ac6a1bc3a5c6a5cca0, type: 3}
   towerAttackDistance: 20
   attackspeed: 1
+--- !u!50 &3045340589722333833
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4820875501583579615}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
