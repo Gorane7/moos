@@ -21,11 +21,11 @@ public class CastleBehavior : MonoBehaviour
         healthBarRed = Instantiate(healthBarRedPrefab, transform.position, Quaternion.identity, transform);
 
         Vector3 redScale = healthBarRed.transform.localScale;
-        redScale.y = 0.1f;
+        redScale.y = 2f;
         healthBarRed.transform.localScale = redScale;
 
         Vector3 redPosition = healthBarRed.transform.localPosition;
-        redPosition.y = 1.1f;
+        redPosition.y = -25f;
         healthBarRed.transform.localPosition = redPosition;
         AdjustHealthBars();
     }
@@ -42,11 +42,11 @@ public class CastleBehavior : MonoBehaviour
         float healthPercentage = (float)currentHealth / baseHealth;
 
         Vector3 redScale = healthBarRed.transform.localScale;
-        redScale.x = healthPercentage;
+        redScale.x = 10f * healthPercentage;
         healthBarRed.transform.localScale = redScale;
 
         Vector3 redPosition = healthBarRed.transform.localPosition;
-        redPosition.x = healthPercentage - 1f;
+        redPosition.x = 10f * (healthPercentage - 1f);
         healthBarRed.transform.localPosition = redPosition;
         } else {
             startGameButton.SetScene(3);
