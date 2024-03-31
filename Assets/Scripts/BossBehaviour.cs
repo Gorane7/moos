@@ -65,12 +65,31 @@ public class BossBehavior : MonoBehaviour
     public void ProjectileHit() {
         Debug.Log("Called boss projectile hit");
         currentHealth -= 1;
+        if (!activated) {
+            activated = true;
+            healthBarRed = Instantiate(healthBarRedPrefab, transform.position, Quaternion.identity, transform);
+
+            Vector3 redScale = healthBarRed.transform.localScale;
+            redScale.y = 0.1f;
+            healthBarRed.transform.localScale = redScale;
+
+            Vector3 redPosition = healthBarRed.transform.localPosition;
+            redPosition.y = 1.1f;
+            healthBarRed.transform.localPosition = redPosition;
+
+            AdjustHealthBars();
+            // Creates the Angered gods message
+            discoverMessage = Instantiate(discoverMessagePrefab);
+            discoverMessage.GetComponent<Canvas>().enabled = true;
+        }
         AdjustHealthBars();
         if (currentHealth <= 0) {
             animator.ResetTrigger("Surm");
             animator.SetTrigger("Surm");
             StartGame();
             GameObject.Destroy(gameObject, 1);
+            float elapsedTime = Time.time - LevelManager.main.GetStartTime();
+            Debug.Log("Time elapsed: " + elapsedTime.ToString("F2") + " seconds");
         }
     }
     /*

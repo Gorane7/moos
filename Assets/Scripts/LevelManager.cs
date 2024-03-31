@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour {
 
     private float mapSize = 35f;
     private int menhirAmount = 0;
+    private float startTime;
 
     private void Awake() {
         main = this;
@@ -44,6 +45,11 @@ public class LevelManager : MonoBehaviour {
         GenerateCaves(25);
         GenerateMenhirs(25);
         GenerateScenery(35);
+        startTime = Time.time;
+    }
+
+    public float GetStartTime() {
+        return startTime;
     }
 
     IEnumerator IncreaseCurrencyOverTime()
