@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 8e39bba50cefd2b48abdbb36504cd07f
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/Tutorial.unity
+    guid: e44a0a5af868e3b4e959d598863fbbdd
+  - enabled: 1
+    path: Assets/Scenes/GoraneScene.unity
+    guid: 06167bc5773ae6ecdb60bfa447180536
+  - enabled: 1
+    path: Assets/Scenes/LossScene.unity
+    guid: 02dac45032cb2ef4e974147808b64af4
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 8e9a93c0399cbf64dbe1016efa080722
   m_configObjects: {}
