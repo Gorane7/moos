@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossBehavior : MonoBehaviour
 {
@@ -31,7 +32,6 @@ public class BossBehavior : MonoBehaviour
     private float showMessage = 5f;
 
     private GameObject discoverMessage;
-    private GameObject victoryMessage;
 
     void Start()
     {
@@ -65,11 +65,11 @@ public class BossBehavior : MonoBehaviour
     public void ProjectileHit() {
         Debug.Log("Called boss projectile hit");
         currentHealth -= 1;
+        AdjustHealthBars();
         if (currentHealth <= 0) {
             animator.ResetTrigger("Surm");
             animator.SetTrigger("Surm");
-            victoryMessage = Instantiate(victoryMessagePrefab);
-            victoryMessage.GetComponent<Canvas>().enabled = true;
+            StartGame();
             GameObject.Destroy(gameObject, 1);
         }
     }
@@ -103,6 +103,23 @@ public class BossBehavior : MonoBehaviour
         }
     }
     */
+
+    private void AdjustHealthBars()
+    {
+        if (healthBarRed != null)
+        {
+            // Calculate the health percentage
+        float healthPercentage = (float)currentHealth / baseHealth;
+
+        Vector3 redScale = healthBarRed.transform.localScale;
+        redScale.x = healthPercentage;
+        healthBarRed.transform.localScale = redScale;
+
+        Vector3 redPosition = healthBarRed.transform.localPosition;
+        redPosition.x = healthPercentage - 1f;
+        healthBarRed.transform.localPosition = redPosition;
+        }
+    }
     private void MoveTowardsTarget(Vector3 target)
     {
         Vector3 direction = (target - transform.position).normalized;
@@ -114,8 +131,23 @@ public class BossBehavior : MonoBehaviour
         if (activated) return;
         if (collision.tag != "Torch") return;
         activated = true;
+        healthBarRed = Instantiate(healthBarRedPrefab, transform.position, Quaternion.identity, transform);
+
+        Vector3 redScale = healthBarRed.transform.localScale;
+        redScale.y = 0.1f;
+        healthBarRed.transform.localScale = redScale;
+
+        Vector3 redPosition = healthBarRed.transform.localPosition;
+        redPosition.y = 1.1f;
+        healthBarRed.transform.localPosition = redPosition;
+
+        AdjustHealthBars();
         // Creates the Angered gods message
         discoverMessage = Instantiate(discoverMessagePrefab);
         discoverMessage.GetComponent<Canvas>().enabled = true;
+    }
+
+    public void StartGame() {
+        SceneManager.LoadScene(4);
     }
 }

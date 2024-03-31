@@ -35,7 +35,7 @@ public class ClickScript : MonoBehaviour
                     animator.SetTrigger("Cast");
 
                     GameObject projectile = Instantiate(emptytorch, new Vector3(-0.6f, 1.2f, 0), Quaternion.LookRotation(forward: Vector3.forward, upwards: Quaternion.Euler(0, 0, 180) * objectPos));
-                    projectile.transform.DOMove(objectPos, distance / projectileSpeed).SetEase(Ease.Linear).OnComplete(() => ExplodeProjectile(projectile, objectPos));
+                    projectile.transform.DOMove(objectPos, distance / projectileSpeed / (1 + 0.25f * LevelManager.main.GetMenhirAmount())).SetEase(Ease.Linear).OnComplete(() => ExplodeProjectile(projectile, objectPos));
                     /*float offsetRange = 2.5f;
                     for (int i = 0; i < 15; i++)
                     {
@@ -67,7 +67,7 @@ public class ClickScript : MonoBehaviour
                     animator.SetTrigger("Cast");
 
                     GameObject projectile = Instantiate(towerPart, new Vector3(-0.6f, 1.2f, 0), Quaternion.LookRotation(forward: Vector3.forward, upwards: Quaternion.Euler(0, 0, 180) * objectPos));
-                    projectile.transform.DOMove(objectPos, distance / projectileSpeed).SetEase(Ease.Linear).OnComplete(() => ExplodeProjectileTower(projectile, objectPos));
+                    projectile.transform.DOMove(objectPos, distance / projectileSpeed / (1 + 0.25f * LevelManager.main.GetMenhirAmount())).SetEase(Ease.Linear).OnComplete(() => ExplodeProjectileTower(projectile, objectPos));
                 }
                 
             }
