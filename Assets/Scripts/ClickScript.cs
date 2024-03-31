@@ -94,7 +94,7 @@ public class ClickScript : MonoBehaviour
         foreach (Tower towerInList in LevelManager.main.towers)
         {
             // Check if the tower's currentObject is close to positionToCreate
-            if (Vector3.Distance(towerInList.GetCurrentObject().transform.position, positiontocreate) < 3f)
+            if (Vector3.Distance(towerInList.GetCurrentObject().transform.position, positiontocreate) < 1f)
             {
                 Debug.Log("Found tower at " + towerInList.GetCurrentObject().transform.position);
                 if (towerInList.AtFinalStage()) {

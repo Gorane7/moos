@@ -545,6 +545,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3427281483446862054, guid: 2ffb0a44367a6afe8991bf3051de059b, type: 3}
     - target: {fileID: 2644491054423673520, guid: 83ea58244cca4784799f497bda38f8c0, type: 3}
+      propertyPath: treePrefab1
+      value: 
+      objectReference: {fileID: 4725021784953483953, guid: 09afaf8cdca3bf77b8e30e2f78f6f77c, type: 3}
+    - target: {fileID: 2644491054423673520, guid: 83ea58244cca4784799f497bda38f8c0, type: 3}
+      propertyPath: treePrefab2
+      value: 
+      objectReference: {fileID: 3066949406709129234, guid: 051270e4130fc2fe388de2f688387239, type: 3}
+    - target: {fileID: 2644491054423673520, guid: 83ea58244cca4784799f497bda38f8c0, type: 3}
       propertyPath: menhirPrefab
       value: 
       objectReference: {fileID: 5640790568922471749, guid: a872ef851d81db84393a50b75aa3b417, type: 3}
