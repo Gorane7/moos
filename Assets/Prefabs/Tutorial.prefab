@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
+  m_sharedMaterial: {fileID: -1868636409570085117, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -362,8 +362,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Next
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
+  m_sharedMaterial: {fileID: -1868636409570085117, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -496,8 +496,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Good luck brave druid?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
+  m_sharedMaterial: {fileID: -1868636409570085117, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -631,8 +631,8 @@ MonoBehaviour:
   m_text: You build towers to defend with right click. Each tower is built in three
     parts before it starts shooting.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
+  m_sharedMaterial: {fileID: -1868636409570085117, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -941,8 +941,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: There is something in the fog hiding, try to discover it.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
+  m_sharedMaterial: {fileID: -1868636409570085117, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1076,8 +1076,8 @@ MonoBehaviour:
   m_text: Sometimes you might discover evil churches. Evil people will spawn from
     there
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
+  m_sharedMaterial: {fileID: -1868636409570085117, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1259,8 +1259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 1820, y: 550}
+  m_AnchoredPosition: {x: 0, y: 60}
+  m_SizeDelta: {x: 1820, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6998266823653303815
 CanvasRenderer:
@@ -1337,15 +1337,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Tutorial
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
+  m_sharedMaterial: {fileID: -1868636409570085117, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1362,7 +1362,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 179
+  m_fontSize: 169.45
   m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1533,8 +1533,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: You light up the world with left click.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
+  m_sharedMaterial: {fileID: -1868636409570085117, guid: 595b4f2b158071a4d8a61a46629bd380, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

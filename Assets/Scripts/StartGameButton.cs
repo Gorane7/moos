@@ -14,4 +14,8 @@ public class StartGameButton : MonoBehaviour {
     public void SetScene(int sceneNumber) {
         gameStartScene = sceneNumber;
     }
+
+    public void ExitGame() {
+        Application.Quit();
+    }
 }
