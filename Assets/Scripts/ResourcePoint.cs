@@ -24,6 +24,7 @@ public class ResourcePoint : MonoBehaviour
     private float elapsedTime = 0f;
     private float currencyAddInterval = 1f;
     private float animationTick = 0;
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -40,6 +41,7 @@ public class ResourcePoint : MonoBehaviour
         maincamera = GameObject.Find("Main Camera");
         spriteRenderer = GetComponent<SpriteRenderer>();
         isVisible = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -124,9 +126,13 @@ public class ResourcePoint : MonoBehaviour
     {
         if (!isVisible) return;
         maincamera.GetComponent<ClickScript>().SetClickedTrue();
-        Debug.Log("Got CLICK");
         if (connectionState == "None") {
             connectionState = "Advancing";
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+
         } else if (connectionState == "Advancing" || connectionState == "Done") {
             StartDying();
         }
