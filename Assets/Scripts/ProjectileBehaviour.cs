@@ -67,10 +67,16 @@ public class ProjectileBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Projectile collided with something");
         if (collision.tag == "Monster")
         {
            
             collision.GetComponent<MonsterBehavior>().ProjectileHit();
+            DestroyObject();
+        }
+        if (collision.tag == "Boss") {
+            Debug.Log("Projectile collided with boss");
+            collision.GetComponent<BossBehavior>().ProjectileHit();
             DestroyObject();
         }
     }

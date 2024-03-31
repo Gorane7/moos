@@ -56,7 +56,7 @@ public class LevelManager : MonoBehaviour {
 
     void GenerateBoss() {
         float randomDirection = Random.Range(0f, 2f * Mathf.PI);
-        float randomDistance = mapSize;
+        float randomDistance = mapSize / 3;
 
         Debug.Log("Boss generation angle: " + randomDirection);
 
@@ -79,7 +79,7 @@ public class LevelManager : MonoBehaviour {
             y = 0f;
             while (true) {
                 randomDirection = Random.Range(0f, 2f * Mathf.PI);
-                if (Random.Range(0f, 1f) < 0.5f) {
+                if (Random.Range(0f, 1f) < 0.7f) {  // Significantly more caves near boss
                     // Generate near boss
                     while (Mathf.Pow(x, 2) + Mathf.Pow(y, 2) < 100f) {
                         randomDistance = Random.Range(0f, 1f);
@@ -136,7 +136,7 @@ public class LevelManager : MonoBehaviour {
             float x, y;
             while (true) {
                 randomDirection = Random.Range(0f, 2f * Mathf.PI);
-                if (Random.Range(0f, 1f) < 0.5f) {
+                if (Random.Range(0f, 1f) < 0.3f) {  // Only slighly more menhirs near boss
                     // Generate near boss
                     randomDistance = Random.Range(0f, 1f);
                     randomDistance = Mathf.Pow(randomDistance, 1);
@@ -196,7 +196,7 @@ public class LevelManager : MonoBehaviour {
             float x, y;
             while (true) {
                 randomDirection = Random.Range(0f, 2f * Mathf.PI);
-                if (Random.Range(0f, 1f) < 0.5f) {
+                if (Random.Range(0f, 1f) < 0f) {  // No bushes near boss
                     // Generate near boss
                     randomDistance = Random.Range(0f, 1f);
                     randomDistance = Mathf.Pow(randomDistance, 2);

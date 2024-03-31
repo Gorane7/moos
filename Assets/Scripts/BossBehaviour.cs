@@ -63,6 +63,7 @@ public class BossBehavior : MonoBehaviour
     }
 
     public void ProjectileHit() {
+        Debug.Log("Called boss projectile hit");
         currentHealth -= 1;
         if (currentHealth <= 0) {
             animator.ResetTrigger("Surm");
