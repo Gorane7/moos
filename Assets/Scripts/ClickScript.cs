@@ -12,6 +12,7 @@ public class ClickScript : MonoBehaviour
     public float projectileSpeed = 1.0f;
     private bool clicked=false;
     private Animator animator;
+    public GameObject puffAnimation;
 
     private void Start()
     {
@@ -103,6 +104,7 @@ public class ClickScript : MonoBehaviour
                 towerInList.Increment();
                 GameObject currentObject = towerInList.GetCurrentObject();
                 GameObject newPrefab = Instantiate(towerInList.GetCurrentPrefab(), currentObject.transform.position, Quaternion.identity);
+                GameObject.Instantiate(puffAnimation, currentObject.transform.position, Quaternion.identity);
                 GameObject.Destroy(currentObject);
                 towerInList.SetCurrentObject(newPrefab);
                 Debug.Log("Upgrading tower");
@@ -112,8 +114,10 @@ public class ClickScript : MonoBehaviour
 
         Tower tower = BuildManager.main.GetSelectedTower();
         GameObject currentPrefab = Instantiate(tower.prefabs[0], positiontocreate, Quaternion.identity);
+        GameObject.Instantiate(puffAnimation, positiontocreate,  Quaternion.identity);
         tower.SetCurrentObject(currentPrefab);
         LevelManager.main.towers.Add(tower);
+        
         Debug.Log("Creating new tower");
         
         //GameObject t = Instantiate(torch, positiontocreate, Quaternion.identity);

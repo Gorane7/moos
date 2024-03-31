@@ -169,3 +169,4 @@ MonoBehaviour:
   emptytorch: {fileID: 45769304530444253, guid: 2189897bf71248a43aaa31e0e029f5d2, type: 3}
   towerPart: {fileID: 45769304530444253, guid: aea1f93d60a0b0d299ede1f1be433353, type: 3}
   projectileSpeed: 3
+  puffAnimation: {fileID: 2939498213236077076, guid: 20ffad9121dfefa42812d800f7f2ab88, type: 3}
