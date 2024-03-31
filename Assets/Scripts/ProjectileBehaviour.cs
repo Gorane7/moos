@@ -7,6 +7,7 @@ public class ProjectileBehaviour : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     private float lifeLength = 5.0f;
     private float lifeStartTime;
+    public GameObject crunchSound;
 
     // Target object towards which the projectile should move
     private GameObject targetObject;
@@ -69,7 +70,7 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         if (collision.tag == "Monster")
         {
-           
+            GameObject.Instantiate(crunchSound, collision.transform);
             collision.GetComponent<MonsterBehavior>().ProjectileHit();
             DestroyObject();
         }
