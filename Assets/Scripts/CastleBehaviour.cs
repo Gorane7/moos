@@ -49,8 +49,8 @@ public class CastleBehavior : MonoBehaviour
         redPosition.x = healthPercentage - 1f;
         healthBarRed.transform.localPosition = redPosition;
         } else {
-            //startGameButton.SetScene(0);
-            //startGameButton.StartGame();
+            startGameButton.SetScene(3);
+            startGameButton.StartGame();
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossBehavior : MonoBehaviour
 {
@@ -31,7 +32,6 @@ public class BossBehavior : MonoBehaviour
     private float showMessage = 5f;
 
     private GameObject discoverMessage;
-    private GameObject victoryMessage;
 
     void Start()
     {
@@ -68,8 +68,7 @@ public class BossBehavior : MonoBehaviour
         if (currentHealth <= 0) {
             animator.ResetTrigger("Surm");
             animator.SetTrigger("Surm");
-            victoryMessage = Instantiate(victoryMessagePrefab);
-            victoryMessage.GetComponent<Canvas>().enabled = true;
+            StartGame();
             GameObject.Destroy(gameObject, 1);
         }
     }
@@ -117,5 +116,9 @@ public class BossBehavior : MonoBehaviour
         // Creates the Angered gods message
         discoverMessage = Instantiate(discoverMessagePrefab);
         discoverMessage.GetComponent<Canvas>().enabled = true;
+    }
+
+    public void StartGame() {
+        SceneManager.LoadScene(4);
     }
 }
