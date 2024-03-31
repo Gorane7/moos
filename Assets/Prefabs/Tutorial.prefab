@@ -823,7 +823,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 358817596214374290}
         m_TargetAssemblyTypeName: NextMessage, Assembly-CSharp
-        m_MethodName: clickNext
+        m_MethodName: clickBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
