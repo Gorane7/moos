@@ -537,6 +537,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4820875501583579615, guid: 2c650f1e0f20f3bb0bece821862c8fbf, type: 3}
     - target: {fileID: 2644491054423673520, guid: 83ea58244cca4784799f497bda38f8c0, type: 3}
+      propertyPath: bushPrefab
+      value: 
+      objectReference: {fileID: 6028287446225576387, guid: 010fbdd4cdce967299488a785be0c7c8, type: 3}
+    - target: {fileID: 2644491054423673520, guid: 83ea58244cca4784799f497bda38f8c0, type: 3}
       propertyPath: cavePrefab
       value: 
       objectReference: {fileID: 3427281483446862054, guid: 2ffb0a44367a6afe8991bf3051de059b, type: 3}
