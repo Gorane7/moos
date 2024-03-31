@@ -7,9 +7,11 @@ public class NextMessage : MonoBehaviour {
 
     private int currentMessageNr = 0;
     public int maxMessageNr;
+    private int minMessageNr = 0;
     public GameObject parentMessage;
     private GameObject childMessage;
     private bool start = false;
+    private bool menu = false;
 
     public void clickNext(){
         disableMessage();
@@ -17,6 +19,17 @@ public class NextMessage : MonoBehaviour {
         currentMessageNr += 1;
         if (currentMessageNr > maxMessageNr) {
             start = true;
+        } else {
+            enableMessage();
+        }
+    }
+
+    public void clickBack() {
+        disableMessage();
+
+        currentMessageNr -= 1;
+        if (currentMessageNr < minMessageNr) {
+            menu = true;
         } else {
             enableMessage();
         }
@@ -38,6 +51,8 @@ public class NextMessage : MonoBehaviour {
 
     public void StartGame() {
         if (start) {
+            SceneManager.LoadScene(2);
+        } if (menu) {
             SceneManager.LoadScene(0);
         }
     }
