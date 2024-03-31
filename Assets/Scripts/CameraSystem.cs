@@ -40,8 +40,7 @@ public class CameraSystem : MonoBehaviour
         float mousePosX = Input.mousePosition.x;
         float mousePosY = Input.mousePosition.y;
         var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = 0f;
-'
+        mouseWorldPos.z = 0.0f;
 
         if (mousePosX < scrollDistance && (mouseWorldPos.x<_cameraBounds.max.x && mouseWorldPos.x > _cameraBounds.min.x))
         {
