@@ -39,18 +39,6 @@ public class BossBehavior : MonoBehaviour
         lastattacktime = Time.time; 
         castle = GameObject.FindGameObjectWithTag("Player");
         activated = false;
-
-        healthBarRed = Instantiate(healthBarRedPrefab, transform.position, Quaternion.identity, transform);
-
-        Vector3 redScale = healthBarRed.transform.localScale;
-        redScale.y = 0.1f;
-        healthBarRed.transform.localScale = redScale;
-
-        Vector3 redPosition = healthBarRed.transform.localPosition;
-        redPosition.y = 1.1f;
-        healthBarRed.transform.localPosition = redPosition;
-
-        AdjustHealthBars();
     }
     private void Update()
     {
@@ -143,6 +131,17 @@ public class BossBehavior : MonoBehaviour
         if (activated) return;
         if (collision.tag != "Torch") return;
         activated = true;
+        healthBarRed = Instantiate(healthBarRedPrefab, transform.position, Quaternion.identity, transform);
+
+        Vector3 redScale = healthBarRed.transform.localScale;
+        redScale.y = 0.1f;
+        healthBarRed.transform.localScale = redScale;
+
+        Vector3 redPosition = healthBarRed.transform.localPosition;
+        redPosition.y = 1.1f;
+        healthBarRed.transform.localPosition = redPosition;
+
+        AdjustHealthBars();
         // Creates the Angered gods message
         discoverMessage = Instantiate(discoverMessagePrefab);
         discoverMessage.GetComponent<Canvas>().enabled = true;
