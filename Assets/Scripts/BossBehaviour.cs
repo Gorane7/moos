@@ -39,6 +39,18 @@ public class BossBehavior : MonoBehaviour
         lastattacktime = Time.time; 
         castle = GameObject.FindGameObjectWithTag("Player");
         activated = false;
+
+        healthBarRed = Instantiate(healthBarRedPrefab, transform.position, Quaternion.identity, transform);
+
+        Vector3 redScale = healthBarRed.transform.localScale;
+        redScale.y = 0.1f;
+        healthBarRed.transform.localScale = redScale;
+
+        Vector3 redPosition = healthBarRed.transform.localPosition;
+        redPosition.y = 1.1f;
+        healthBarRed.transform.localPosition = redPosition;
+
+        AdjustHealthBars();
     }
     private void Update()
     {
@@ -65,6 +77,7 @@ public class BossBehavior : MonoBehaviour
     public void ProjectileHit() {
         Debug.Log("Called boss projectile hit");
         currentHealth -= 1;
+        AdjustHealthBars();
         if (currentHealth <= 0) {
             animator.ResetTrigger("Surm");
             animator.SetTrigger("Surm");
@@ -102,6 +115,23 @@ public class BossBehavior : MonoBehaviour
         }
     }
     */
+
+    private void AdjustHealthBars()
+    {
+        if (healthBarRed != null)
+        {
+            // Calculate the health percentage
+        float healthPercentage = (float)currentHealth / baseHealth;
+
+        Vector3 redScale = healthBarRed.transform.localScale;
+        redScale.x = healthPercentage;
+        healthBarRed.transform.localScale = redScale;
+
+        Vector3 redPosition = healthBarRed.transform.localPosition;
+        redPosition.x = healthPercentage - 1f;
+        healthBarRed.transform.localPosition = redPosition;
+        }
+    }
     private void MoveTowardsTarget(Vector3 target)
     {
         Vector3 direction = (target - transform.position).normalized;

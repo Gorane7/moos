@@ -105,14 +105,19 @@ public class TowerBehaviour : MonoBehaviour
     void Update()
     {
         //DrawCircle();
-        if (monstersInRange.Count != 0 && Time.time - lastshoottime > shootdelay && isVisible)
+        int i = 0;
+        while (monstersInRange.Count > i && Time.time - lastshoottime > shootdelay && isVisible)
         {
-
+            if (monstersInRange[i] == null) {
+                i += 1;
+                continue;
+            }
             Vector3 objectpos = monstersInRange[0].transform.position;
             Vector3 vectorToTarget = objectpos - transform.position;
             Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 180) * vectorToTarget;  
             Instantiate(objectToGenerate, transform.position, Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget));
             lastshoottime = Time.time;
+            break;
         }
     }
 
