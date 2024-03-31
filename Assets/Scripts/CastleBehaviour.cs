@@ -53,4 +53,8 @@ public class CastleBehavior : MonoBehaviour
             startGameButton.StartGame();
         }
     }
+
+    public int GetHealth() {
+        return currentHealth;
+    }
 }
