@@ -10,11 +10,15 @@ public class LevelManager : MonoBehaviour {
     public GameObject cavePrefab;
     public GameObject bossPrefab;
     public GameObject menhirPrefab;
+    public GameObject bushPrefab;
+    public GameObject treePrefab1;
+    public GameObject treePrefab2;
 
     public List<Tower> towers;
     public List<GameObject> towerButtons = new List<GameObject>();
     private List<GameObject> caves;
     private List<GameObject> menhirs;
+    private List<GameObject> scenery;
     public List<GameObject> monsters;
     public List<GameObject> torches;
     private int currentHealth = baseHealth;
@@ -22,6 +26,8 @@ public class LevelManager : MonoBehaviour {
     private GameObject boss;
 
     public int currency = 10;
+
+    private float mapSize = 35f;
 
     private void Awake() {
         main = this;
@@ -31,10 +37,12 @@ public class LevelManager : MonoBehaviour {
     {
         caves = new List<GameObject>();
         menhirs = new List<GameObject>();
+        scenery = new List<GameObject>();
         StartCoroutine(IncreaseCurrencyOverTime());
         GenerateBoss();
-        GenerateCaves(150);
-        GenerateMenhirs(150);
+        GenerateCaves(25);
+        GenerateMenhirs(25);
+        GenerateScenery(35);
     }
 
     IEnumerator IncreaseCurrencyOverTime()
@@ -48,7 +56,7 @@ public class LevelManager : MonoBehaviour {
 
     void GenerateBoss() {
         float randomDirection = Random.Range(0f, 2f * Mathf.PI);
-        float randomDistance = 50f;
+        float randomDistance = mapSize;
 
         Debug.Log("Boss generation angle: " + randomDirection);
 
@@ -67,22 +75,26 @@ public class LevelManager : MonoBehaviour {
             float randomDirection;
             float randomDistance = 0f;
             float x, y;
+            x = 0f;
+            y = 0f;
             while (true) {
                 randomDirection = Random.Range(0f, 2f * Mathf.PI);
                 if (Random.Range(0f, 1f) < 0.5f) {
                     // Generate near boss
-                    randomDistance = Random.Range(0f, 1f);
-                    randomDistance = Mathf.Pow(randomDistance, 1);
-                    randomDistance *= 50f;
-                    x = randomDistance * Mathf.Cos(randomDirection);
-                    y = randomDistance * Mathf.Sin(randomDirection);
-                    x += boss.transform.position.x;
-                    y += boss.transform.position.y;
+                    while (Mathf.Pow(x, 2) + Mathf.Pow(y, 2) < 100f) {
+                        randomDistance = Random.Range(0f, 1f);
+                        randomDistance = Mathf.Pow(randomDistance, 1);
+                        randomDistance *= mapSize;
+                        x = randomDistance * Mathf.Cos(randomDirection);
+                        y = randomDistance * Mathf.Sin(randomDirection);
+                        x += boss.transform.position.x;
+                        y += boss.transform.position.y;
+                    }
                 } else {
                     while (randomDistance < 10f) {
                         randomDistance = Random.Range(0f, 1f);
                         randomDistance = 1 - Mathf.Pow(randomDistance, 3);
-                        randomDistance *= 50f;
+                        randomDistance *= mapSize;
                     }
                     x = randomDistance * Mathf.Cos(randomDirection);
                     y = randomDistance * Mathf.Sin(randomDirection);
@@ -128,16 +140,16 @@ public class LevelManager : MonoBehaviour {
                     // Generate near boss
                     randomDistance = Random.Range(0f, 1f);
                     randomDistance = Mathf.Pow(randomDistance, 1);
-                    randomDistance *= 50f;
+                    randomDistance *= mapSize;
                     x = randomDistance * Mathf.Cos(randomDirection);
                     y = randomDistance * Mathf.Sin(randomDirection);
                     x += boss.transform.position.x;
                     y += boss.transform.position.y;
                 } else {
-                    while (randomDistance < 5f) {
+                    while (randomDistance < 3f) {
                         randomDistance = Random.Range(0f, 1f);
                         randomDistance = 1 - Mathf.Pow(randomDistance, 3);
-                        randomDistance *= 50f;
+                        randomDistance *= mapSize;
                     }
                     x = randomDistance * Mathf.Cos(randomDirection);
                     y = randomDistance * Mathf.Sin(randomDirection);
@@ -170,6 +182,81 @@ public class LevelManager : MonoBehaviour {
 
             // Add the instantiated cave to the caves list
             menhirs.Add(newMenhir);
+        }
+    }
+
+    void GenerateScenery(int numberOfBushes)
+    {
+        //Debug.Log("Starting bush generation");
+        for (int i = 0; i < numberOfBushes; i++)
+        {
+            //Debug.Log("Starting generation of bush " + i);
+            float randomDirection;
+            float randomDistance = 0f;
+            float x, y;
+            while (true) {
+                randomDirection = Random.Range(0f, 2f * Mathf.PI);
+                if (Random.Range(0f, 1f) < 0.5f) {
+                    // Generate near boss
+                    randomDistance = Random.Range(0f, 1f);
+                    randomDistance = Mathf.Pow(randomDistance, 2);
+                    randomDistance *= mapSize;
+                    x = randomDistance * Mathf.Cos(randomDirection);
+                    y = randomDistance * Mathf.Sin(randomDirection);
+                    x += boss.transform.position.x;
+                    y += boss.transform.position.y;
+                } else {
+                    while (randomDistance < 5f) {
+                        randomDistance = Random.Range(0f, 1f);
+                        randomDistance = 1 - Mathf.Pow(randomDistance, 2);
+                        randomDistance *= mapSize;
+                    }
+                    x = randomDistance * Mathf.Cos(randomDirection);
+                    y = randomDistance * Mathf.Sin(randomDirection);
+                }
+
+                bool works = true;
+                if (Mathf.Pow(x - boss.transform.position.x, 2)+ Mathf.Pow(y - boss.transform.position.y, 2) < 25f) {
+                    works = false;
+                }
+                foreach(GameObject cave in caves) {
+                    if (Mathf.Pow(x - cave.transform.position.x, 2)+ Mathf.Pow(y - cave.transform.position.y, 2) < 5f) {
+                        works = false;
+                    }
+                }
+                foreach(GameObject menhir in menhirs) {
+                    if (Mathf.Pow(x - menhir.transform.position.x, 2)+ Mathf.Pow(y - menhir.transform.position.y, 2) < 5f) {
+                        works = false;
+                    }
+                }
+                foreach(GameObject bush in scenery) {
+                    if (Mathf.Pow(x - bush.transform.position.x, 2)+ Mathf.Pow(y - bush.transform.position.y, 2) < 5f) {
+                        works = false;
+                    }
+                }
+                if (works) {
+                    break;
+                }
+            }
+
+            //Debug.Log("Finished generation of bush " + i);
+
+            // Generate random position within some range
+            Vector3 randomPosition = new Vector3(x, y, 0f);
+
+            // Instantiate a cave at the random position
+            float roll = Random.Range(0f, 1f);
+            GameObject newBush;
+            if (roll < 0.33) {
+                newBush = Instantiate(bushPrefab, randomPosition, Quaternion.identity);
+            } else if (roll < 0.66) {
+                newBush = Instantiate(treePrefab1, randomPosition, Quaternion.identity);
+            } else {
+                newBush = Instantiate(treePrefab1, randomPosition, Quaternion.identity);
+            }
+
+            // Add the instantiated cave to the caves list
+            scenery.Add(newBush);
         }
     }
     
